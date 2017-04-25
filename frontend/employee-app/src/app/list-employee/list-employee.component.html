@@ -1,0 +1,9 @@
+<search-bar [deleteVisible]="toggleDelete" [employeeCount]="employees.length"></search-bar>
+<div class="scroll-bar-div">
+    <!--This is ScrollBar-->
+        <!--<employee [ngClass]="{'emp-card-selected': employee===selectedEmployee}"-->
+    <employee [employees]="employees" [selectedEmployee]="selectedEmployee" (clicked)="onEmployeeClicked($event)">
+    </employee>
+
+</div>
+<button md-mini-fab class="floating-button" (click)="setNew()"><md-icon svgIcon="add"></md-icon></button>
