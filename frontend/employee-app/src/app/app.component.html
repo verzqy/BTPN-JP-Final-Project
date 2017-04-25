@@ -16,12 +16,12 @@
 
 <div class="main-div">
   <div class="left-div">
-    <list-employee (employeeClicked)="onEmployeeInListClicked($event)"></list-employee>
+    <list-employee (employeeClicked)="onEmployeeInListClicked($event)" [selectedEmployee]="selectedEmployee"></list-employee>
   </div>
 
   <div class="right-div">
     <navigator-bar></navigator-bar>
-    <form-employee [selectedEmp]="selectedEmployee"></form-employee>
+    <form-employee (cancelClicked)="cancelFormClicked($event)" [selectedEmp]="selectedEmployee"></form-employee>
   </div>
 </div>
 

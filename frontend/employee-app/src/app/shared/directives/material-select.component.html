@@ -1,7 +1,6 @@
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="!!selectedValue" >
     <input class="mdl-textfield__input" type="text" id="{{name}}" #selectedText [value]="selectedValue" readonly>
     <label [attr.for]="name">
-        <!--<md-icon class="mdl-icon-toggle__label" svgIcon="keyboard_arrow_down"></md-icon>-->
         <span class="arrow-icon"></span>
     </label>
     <label [attr.for]="name" class="mdl-textfield__label">{{label}}</label>

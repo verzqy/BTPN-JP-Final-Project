@@ -7,3 +7,4 @@ export const lookupList = {
     grade: ['SE - JP', 'SE - PG', 'SE - AP', 'SE - AN', 'FA-FA4'],
     division: ['CDC AsteRx', 'SWD Pink', 'SWD Green', 'Finance & Accounting']
 };
+

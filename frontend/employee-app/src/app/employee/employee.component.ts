@@ -8,17 +8,14 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 export class EmployeeComponent implements OnInit {
 	@Input() employees;
-	@Output() clicked = new EventEmitter();
-
+	@Input() sortFlag;
 	@Input() selectedEmployee;
+	@Output() clicked = new EventEmitter();
 
 	ngOnInit() { }
 
 	onClick(emp) {
 		this.selectedEmployee = emp;
-		// if(this.selectedEmployee.suspendDate==="") {
-		// 	this.selectedEmployee.suspendDate = "-"
-		// }
 		this.clicked.emit(this.selectedEmployee);
 	}
 }

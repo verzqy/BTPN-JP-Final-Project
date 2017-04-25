@@ -1,8 +1,8 @@
-<search-bar [deleteVisible]="toggleDelete" [employeeCount]="employees.length"></search-bar>
+<search-bar [deleteVisible]="toggleDelete" [employeeCount]="employees.length" (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
 <div class="scroll-bar-div">
     <!--This is ScrollBar-->
         <!--<employee [ngClass]="{'emp-card-selected': employee===selectedEmployee}"-->
-    <employee [employees]="employees" [selectedEmployee]="selectedEmployee" (clicked)="onEmployeeClicked($event)">
+    <employee [employees]="employees" [sortFlag]="sortFlag" [selectedEmployee]="selectedEmployee" (clicked)="onEmployeeClicked($event)">
     </employee>
 
 </div>

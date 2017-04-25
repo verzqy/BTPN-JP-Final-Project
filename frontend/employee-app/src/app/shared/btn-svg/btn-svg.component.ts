@@ -60,8 +60,5 @@ export class BtnSvgComponent {
     iconRegistry.addSvgIcon(
       'camera',
       sanitizer.bypassSecurityTrustResourceUrl('src/btn-svg/camera.svg'));
-    iconRegistry.addSvgIcon(
-      'keyboard_arrow_down',
-      sanitizer.bypassSecurityTrustResourceUrl('src/btn-svg/keyboard_arrow_down.svg'));
   }
 }

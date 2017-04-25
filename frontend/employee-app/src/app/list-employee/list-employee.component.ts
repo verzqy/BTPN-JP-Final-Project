@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Employee } from "../shared/model/employee.model";
 
 import { EmployeeService } from '../shared/services/employee-list.service';
@@ -11,8 +11,9 @@ import { EmployeeService } from '../shared/services/employee-list.service';
 
 export class ListEmployeeComponent implements OnInit {
 	employees;
-	selectedEmployee: Employee;
+	@Input() selectedEmployee: Employee;
 	toggleDelete = false;
+	sortFlag = true;
 
 	@Output() employeeClicked = new EventEmitter();
 
@@ -36,5 +37,14 @@ export class ListEmployeeComponent implements OnInit {
 		this.selectedEmployee.division = "CDC AsteRx";
 		this.onEmployeeClicked(this.selectedEmployee);
 		this.toggleDelete = false;
+	}
+
+	onEmpDelete() {
+		this.eService.delete(this.selectedEmployee.Id);
+		this.onEmployeeClicked(null);
+	}
+
+	onEmpSort(flag) {
+		this.sortFlag = flag;
 	}
 }

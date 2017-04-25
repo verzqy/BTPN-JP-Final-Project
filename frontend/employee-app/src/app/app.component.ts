@@ -11,4 +11,8 @@ export class AppComponent {
   onEmployeeInListClicked(emp) {
     this.selectedEmployee = emp;
   }
+
+  cancelFormClicked(emp) {
+    this.selectedEmployee = emp;
+  }
 }

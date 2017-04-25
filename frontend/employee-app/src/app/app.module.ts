@@ -6,20 +6,20 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule } from '@angular/material';
+import { MDL } from './shared/directives/material-design-lite-upgrade-element';
+import { Md2Module } from 'md2';
 
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormEmployeeComponent } from './form-employee/form-employee.component';
 import { EmployeeComponent } from './employee/employee.component';
-// import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
 import { NavigatorBarComponent } from './navigator-bar/navigator-bar.component';
 import { BtnSvgComponent } from './shared/btn-svg/btn-svg.component';
 import { EmployeeService } from './shared/services/employee-list.service';
 import { SelectedDirective } from './shared/directives/selected.directive';
 import { lookupListToken, lookupList } from './shared/providers';
-import { MDL } from './shared/directives/material-design-lite-upgrade-element';
 import { MaterialSelect } from './shared/directives/material-select.component';
-import { Md2Module } from 'md2';
+import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
 
 @NgModule({
   declarations: [
@@ -28,12 +28,12 @@ import { Md2Module } from 'md2';
     SearchBarComponent,
     FormEmployeeComponent,
     EmployeeComponent,
-    // DetailEmployeeComponent,
     NavigatorBarComponent,
     BtnSvgComponent,
     SelectedDirective,
     MDL,
-    MaterialSelect
+    MaterialSelect,
+    OrderByAscDesc
   ],
   imports: [
     BrowserModule,

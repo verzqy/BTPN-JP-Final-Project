@@ -6,7 +6,49 @@ export class EmployeeService {
     return this.employees;
   }
 
-employees = [
+  add(employee) {
+    if (employee.Id) {
+      var updEmployee = this.employees.find(emp => emp.Id === employee.Id);
+      updEmployee.firstName = employee.firstName;
+      updEmployee.lastName = employee.lastName;
+      updEmployee.gender = employee.gender;
+      updEmployee.dob = employee.dob;
+      updEmployee.nationality = employee.nationality;
+      updEmployee.maritalStatus = employee.maritalStatus;
+      updEmployee.phone = employee.phone;
+      updEmployee.subDivision = employee.subDivision;
+      updEmployee.status = employee.status;
+      updEmployee.suspendDate = employee.suspendDate;
+      updEmployee.hiredDate = employee.hiredDate;
+      updEmployee.grade = employee.grade;
+      updEmployee.division = employee.division;
+      updEmployee.email = employee.email;
+      updEmployee.location = employee.location;
+      updEmployee.photo = employee.photo;
+      console.log("Updated");
+    } else {
+      employee.Id = this._getNewId();
+      this.employees.push(employee);
+      console.log("Added");
+    }
+  }
+
+  delete(Id) {
+    var updEmployee = this.employees.find(emp => emp.Id === Id);
+    var index = this.employees.indexOf(updEmployee);
+    if (index >= 0) {
+      this.employees.splice(index, 1);
+    }
+    console.log("Deleted");
+  }
+
+  _getNewId() {
+    if (this.employees.length > 0) {
+      return Math.max.apply(Math, this.employees.map(emp => emp.Id)) + 1;
+    }
+  }
+
+  employees = [
     {
       Id: 1,
       firstName: "Albertus",
@@ -84,5 +126,5 @@ employees = [
       photo: null
     }
   ];
-  
+
 }
