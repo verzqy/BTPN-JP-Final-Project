@@ -5,12 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule, MdDialogModule } from '@angular/material';
 import { Md2Module } from 'md2';
 import { MdlModule } from '@angular-mdl/core';
 
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchBarComponent, FilterDialogComponent } from './search-bar/search-bar.component';
 import { FormEmployeeComponent } from './form-employee/form-employee.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { NavigatorBarComponent } from './navigator-bar/navigator-bar.component';
@@ -20,6 +20,7 @@ import { SelectedDirective } from './shared/directives/selected.directive';
 import { lookupListToken, lookupList } from './shared/providers';
 import { MaterialSelect } from './shared/directives/material-select.component';
 import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
+import { SafeUrl } from './shared/pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,12 @@ import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
     BtnSvgComponent,
     SelectedDirective,
     MaterialSelect,
-    OrderByAscDesc
+    FilterDialogComponent,
+    OrderByAscDesc,
+    SafeUrl
+  ],
+  entryComponents: [
+    FilterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,7 @@ import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
     MdChipsModule,
     MdTabsModule,
     MdSelectModule,
+    MdDialogModule,
     MdlModule,
     Md2Module.forRoot()
   ],

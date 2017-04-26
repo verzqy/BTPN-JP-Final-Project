@@ -55,9 +55,23 @@ export class FormEmployeeComponent implements OnInit {
 	}
 
 	onCancel() {
-		this.selectedEmployee =  this.eService.getNewBlankEmployee();
-		this.initialEmployee =  this.selectedEmployee;
+		this.selectedEmployee = this.eService.getNewBlankEmployee();
+		this.initialEmployee = this.selectedEmployee;
 		this.cancelClicked.emit(this.selectedEmployee);
 	}
 
+	employeeImage="src/images/no-image.png";
+	onChange(event) {
+		var file = event.srcElement.files;
+
+		console.log(file[0]);
+		var reader = new FileReader();
+
+		reader.onload = (event: any) => {
+			this.employeeImage = event.target.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
+		console.log(this.employeeImage);
+		
+	}
 }

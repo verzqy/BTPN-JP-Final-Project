@@ -1,5 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter, Inject } from '@angular/core';
 import { lookupListToken } from '../shared/providers';
+import { MdDialog, MdDialogRef } from '@angular/material';
+// import { FilterDialogComponent } from '../shared/directives/filter-dialog.component';
 
 @Component({
 	selector: 'search-bar',
@@ -16,7 +18,8 @@ export class SearchBarComponent implements OnInit {
 	sortFlag = false;
 
 	constructor(
-		@Inject(lookupListToken) public lookupList) { }
+		@Inject(lookupListToken) public lookupList,
+		public dialog: MdDialog) { }
 
 	ngOnInit() { }
 
@@ -32,4 +35,20 @@ export class SearchBarComponent implements OnInit {
 	onKeyUp($event) {
 		this.searchEmp.emit($event);
 	}
+
+	selectedOption: string;
+	openDialog() {
+		let dialogRef = this.dialog.open(FilterDialogComponent);
+		dialogRef.afterClosed().subscribe(result => {
+			this.selectedOption = result;
+		});
+	}
+}
+
+@Component({
+	selector: 'filter-dialog',
+	template: 'Another Filter Dialog!',
+})
+export class FilterDialogComponent {
+	constructor(public dialogRef: MdDialogRef<FilterDialogComponent>) { }
 }
