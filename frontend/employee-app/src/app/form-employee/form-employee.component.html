@@ -1,32 +1,45 @@
 <div *ngIf="eService.showForm==true" class="form-body">
     <div class=left-form>
-        <mdl-textfield type="text" label="First Name" [(ngModel)]="initialEmployee.firstName" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Last Name" [(ngModel)]="initialEmployee.lastName" floating-label></mdl-textfield>
-        <material-select [name]="'gender'" [(selectedValue)]="initialEmployee.gender" [items]="lookupList.gender" [label]="'Gender'"></material-select>
+        <mdl-textfield type="text" required label="First Name" [(ngModel)]="initialEmployee.firstName" floating-label></mdl-textfield>
+        <mdl-textfield type="text" required label="Last Name" [(ngModel)]="initialEmployee.lastName" floating-label></mdl-textfield>
+        <md-select class="md-select" placeholder="Gender" [(ngModel)]="initialEmployee.gender">
+            <md-option *ngFor="let gender of lookupList.gender" value="{{gender}}">{{gender}}</md-option>
+        </md-select>
         <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Date Of Birth" style="width: 300px"
             [(ngModel)]="initialEmployee.dob"></md2-datepicker>
         <mdl-textfield type="text" label="Nationality" [(ngModel)]="initialEmployee.nationality" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Marital Status" [(ngModel)]="initialEmployee.maritalStatus" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Phone" [(ngModel)]="initialEmployee.phone" floating-label></mdl-textfield>
+        <md-select class="md-select" placeholder="Marital Status" [(ngModel)]="initialEmployee.maritalStatus">
+            <md-option *ngFor="let maritalStatus of lookupList.maritalStatus" value="{{maritalStatus}}">{{maritalStatus}}</md-option>
+        </md-select>
+        <mdl-textfield type="text" pattern="-?[0-9,+]*(\.[0-9,+]+)?" error-msg="Input is not a number!" label="Phone" [(ngModel)]="initialEmployee.phone"
+            floating-label></mdl-textfield>
         <mdl-textfield type="text" label="Email" [(ngModel)]="initialEmployee.email" floating-label></mdl-textfield>
     </div>
     <div class=right-form>
         <mdl-textfield type="text" label="Sub Division" [(ngModel)]="initialEmployee.subDivision" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Status" [(ngModel)]="initialEmployee.status" floating-label></mdl-textfield>
+        <md-select class="md-select" placeholder="Status" [(ngModel)]="initialEmployee.status">
+            <md-option *ngFor="let status of lookupList.status" value="{{status}}">{{status}}</md-option>
+        </md-select>
         <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Suspend Date" style="width: 300px"
             [(ngModel)]="initialEmployee.suspendDate"></md2-datepicker>
         <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Hired Date" style="width: 300px"
             [(ngModel)]="initialEmployee.hiredDate"></md2-datepicker>
-        <material-select [name]="'grade'" [(selectedValue)]="initialEmployee.grade" [items]="lookupList.grade" [label]="'Grade'"></material-select>
-        <material-select [name]="'division'" [(selectedValue)]="initialEmployee.division" [items]="lookupList.division" [label]="'Division'"></material-select>
-        <mdl-textfield type="text" label="Location" [(ngModel)]="initialEmployee.location" floating-label></mdl-textfield>
+        <md-select class="md-select" placeholder="Grade" [(ngModel)]="initialEmployee.grade">
+            <md-option *ngFor="let grade of lookupList.grade" value="{{grade}}">{{grade}}</md-option>
+        </md-select>
+        <md-select class="md-select" placeholder="Division" [(ngModel)]="initialEmployee.division">
+            <md-option *ngFor="let division of lookupList.division" value="{{division}}">{{division}}</md-option>
+        </md-select>
+        <md-select class="md-select" placeholder="Location" [(ngModel)]="initialEmployee.location">
+            <md-option *ngFor="let location of lookupList.location" value="{{location}}">{{location}}</md-option>
+        </md-select>
     </div>
     <div class="form-img">
         <!--<img class="img" src="src/images/no-image.png" (click)="fileInput.click()">-->
         <img class="img" [src]="employeeImage | safeUrl" (click)="fileInput.click()">
         <button class="upload-icon" (click)="fileInput.click()" md-icon-button><md-icon svgIcon="camera"></md-icon></button>
     </div>
-    <input #fileInput type="file" hidden="hidden" (change)="onChange($event)"/>
+    <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" />
     <div class="form-btn">
         <div class="btn">
             <button md-raised-button (click)="onCancel()">CANCEL</button>

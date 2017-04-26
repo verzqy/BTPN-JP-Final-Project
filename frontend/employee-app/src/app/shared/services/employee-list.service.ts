@@ -5,9 +5,12 @@ export class EmployeeService {
 
   getNewBlankEmployee() {
     var blankEmp = new Employee();
-		blankEmp.gender = "Male";
-		blankEmp.grade = "SE - PG";
-		blankEmp.division = "CDC AsteRx";
+    blankEmp.gender = "Male";
+    blankEmp.grade = "SE - PG";
+    blankEmp.division = "CDC AsteRx";
+    blankEmp.maritalStatus = "Single";
+    blankEmp.status = 'Contract';
+    blankEmp.location = "Bali";
     return blankEmp;
   }
 

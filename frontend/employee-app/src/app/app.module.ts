@@ -10,7 +10,7 @@ import { Md2Module } from 'md2';
 import { MdlModule } from '@angular-mdl/core';
 
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
-import { SearchBarComponent, FilterDialogComponent } from './search-bar/search-bar.component';
+import { SearchBarComponent, DeleteDialogComponent } from './search-bar/search-bar.component';
 import { FormEmployeeComponent } from './form-employee/form-employee.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { NavigatorBarComponent } from './navigator-bar/navigator-bar.component';
@@ -18,7 +18,6 @@ import { BtnSvgComponent } from './shared/btn-svg/btn-svg.component';
 import { EmployeeService } from './shared/services/employee-list.service';
 import { SelectedDirective } from './shared/directives/selected.directive';
 import { lookupListToken, lookupList } from './shared/providers';
-import { MaterialSelect } from './shared/directives/material-select.component';
 import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
 import { SafeUrl } from './shared/pipes/safe-url.pipe';
 
@@ -32,13 +31,12 @@ import { SafeUrl } from './shared/pipes/safe-url.pipe';
     NavigatorBarComponent,
     BtnSvgComponent,
     SelectedDirective,
-    MaterialSelect,
-    FilterDialogComponent,
+    DeleteDialogComponent,
     OrderByAscDesc,
     SafeUrl
   ],
   entryComponents: [
-    FilterDialogComponent
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,

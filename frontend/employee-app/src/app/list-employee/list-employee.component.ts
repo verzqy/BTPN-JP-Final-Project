@@ -55,15 +55,18 @@ export class ListEmployeeComponent implements OnInit {
 	}
 
 	onEmpSearch($event) {
-		this.searchFlag = $event;
-		const query = $event.target.value.toLowerCase();
-		if (query) {
-			this.employees = this.originEmployees.filter(emp => {
-				let empName = `${emp.firstName} ${emp.lastName}`;
-				return empName.toLowerCase().includes(query);
-			})
-		} else {
-			this.employees = this.originEmployees;
+		if ($event) {
+			this.searchFlag = $event;
+			const query = $event.target.value.toLowerCase();
+			if (query) {
+				this.employees = this.originEmployees.filter(emp => {
+					let empName = `${emp.firstName} ${emp.lastName}`;
+					return empName.toLowerCase().includes(query);
+				})
+			} else {
+				this.employees = this.originEmployees;
+			}
 		}
+
 	}
 }

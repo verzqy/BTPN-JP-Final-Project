@@ -13,11 +13,8 @@
         </md-chip-list>
     </div>
     <div class="right-search-menu">
-        <button *ngIf="selectedEmployeeId" (click)="onDelete()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
+        <button *ngIf="selectedEmployeeId" (click)="openDeleteDialog()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
         <button md-icon-button (click)="onSort()"><md-icon svgIcon="sort_by_alpha"></md-icon></button>
-        <button md-icon-button (click)="openDialog()"><md-icon svgIcon="filter"></md-icon></button>
-        <!--<button md-icon-button (click)="filterDialog.show()"><md-icon svgIcon="filter"></md-icon></button>-->
+        <button md-icon-button><md-icon svgIcon="filter"></md-icon></button>
     </div>
 </div>
-
-<!--<mdl-alert #filterDialog="mdlAlert" message="Filter Dialog Man!" okText="Got it!"></mdl-alert>-->

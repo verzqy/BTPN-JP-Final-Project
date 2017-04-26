@@ -23,10 +23,6 @@ export class SearchBarComponent implements OnInit {
 
 	ngOnInit() { }
 
-	onDelete() {
-		this.deleteClick.emit();
-	}
-
 	onSort() {
 		this.sortClick.emit(this.sortFlag);
 		this.sortFlag = !this.sortFlag;
@@ -36,19 +32,37 @@ export class SearchBarComponent implements OnInit {
 		this.searchEmp.emit($event);
 	}
 
-	selectedOption: string;
-	openDialog() {
-		let dialogRef = this.dialog.open(FilterDialogComponent);
+	openDeleteDialog() {
+		let dialogRef = this.dialog.open(DeleteDialogComponent, {
+			height: '140px',
+			width: '200px'
+		});
 		dialogRef.afterClosed().subscribe(result => {
-			this.selectedOption = result;
+			if (result != undefined) {
+				if (result.action == "delete") {
+					this.onDelete();
+				}
+			}
 		});
 	}
+
+	onDelete() {
+		this.deleteClick.emit();
+	}
+
 }
 
 @Component({
-	selector: 'filter-dialog',
-	template: 'Another Filter Dialog!',
+	selector: 'delete-dialog',
+	template: `
+	<div style="margin: auto; text-align: center;">
+        <a>Are you sure delete this employee?</a>
+		<div style="position: absolute; left: 20px; right: 20px; bottom: 20px;">
+        	<button md-mini-fab color="primary" style="float:left; margin-right: 2px;" (click)="dialogRef.close({action:'no'})">NO</button>
+			<button md-mini-fab color="accent" style="float:right" (click)="dialogRef.close({action:'delete'})">YES</button>
+        </div>
+	</div>`
 })
-export class FilterDialogComponent {
-	constructor(public dialogRef: MdDialogRef<FilterDialogComponent>) { }
+export class DeleteDialogComponent {
+	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>) { }
 }

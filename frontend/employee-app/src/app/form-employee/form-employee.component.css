@@ -90,3 +90,19 @@ mdl-textfield {
     /*border-top: 5px solid transparent;*/
     display:none;
 }
+
+.md-select {
+    margin-top: 18px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+/deep/ .md-select .mat-select-trigger {
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/deep/ .md-select .mat-select-trigger .mat-select-placeholder.mat-floating-placeholder {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
