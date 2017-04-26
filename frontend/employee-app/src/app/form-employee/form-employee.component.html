@@ -1,4 +1,4 @@
-<div *ngIf=initialEmployee class="form-body">
+<div *ngIf="eService.showForm==true" class="form-body">
     <div class=left-form>
         <mdl-textfield type="text" label="First Name" [(ngModel)]="initialEmployee.firstName" floating-label></mdl-textfield>
         <mdl-textfield type="text" label="Last Name" [(ngModel)]="initialEmployee.lastName" floating-label></mdl-textfield>

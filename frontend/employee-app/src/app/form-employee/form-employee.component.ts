@@ -46,7 +46,7 @@ export class FormEmployeeComponent implements OnInit {
 		@Inject(lookupListToken) public lookupList) { }
 
 	ngOnInit() {
-
+		this.eService.showForm = false;
 	}
 
 	onSave() {
@@ -58,6 +58,7 @@ export class FormEmployeeComponent implements OnInit {
 		this.selectedEmployee = this.eService.getNewBlankEmployee();
 		this.initialEmployee = this.selectedEmployee;
 		this.cancelClicked.emit(this.selectedEmployee);
+		this.eService.showForm = false;
 	}
 
 	employeeImage="src/images/no-image.png";

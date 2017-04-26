@@ -1,6 +1,7 @@
 import { Employee } from "../model/employee.model";
 
 export class EmployeeService {
+  showForm = false;
 
   getNewBlankEmployee() {
     var blankEmp = new Employee();

@@ -12,6 +12,7 @@ import { EmployeeService } from '../shared/services/employee-list.service';
 export class ListEmployeeComponent implements OnInit {
 	employees;
 	originEmployees;
+	searchFlag;
 	@Input() selectedEmployee: Employee;
 	sortFlag = true;
 
@@ -28,6 +29,7 @@ export class ListEmployeeComponent implements OnInit {
 	onEmployeeClicked(emp) {
 		this.selectedEmployee = emp;
 		this.employeeClicked.emit(emp);
+		this.eService.showForm = true;
 	}
 
 	setNew() {
@@ -44,6 +46,8 @@ export class ListEmployeeComponent implements OnInit {
 	onEmpDelete() {
 		this.eService.delete(this.selectedEmployee.Id);
 		this.setNew();
+		this.onEmpSearch(this.searchFlag);
+		this.eService.showForm = false;
 	}
 
 	onEmpSort(flag) {
@@ -51,6 +55,7 @@ export class ListEmployeeComponent implements OnInit {
 	}
 
 	onEmpSearch($event) {
+		this.searchFlag = $event;
 		const query = $event.target.value.toLowerCase();
 		if (query) {
 			this.employees = this.originEmployees.filter(emp => {
