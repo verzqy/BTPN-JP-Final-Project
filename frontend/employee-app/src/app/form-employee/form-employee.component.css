@@ -67,18 +67,12 @@
     padding: 5px 20px 0px 0px;
 }
 
-.mdl-textfield__input  {
-    padding : 4px 0px 0px 0px;
+mdl-textfield {
+     margin-bottom: -10px;
 }
 
 .date-picker {
-    margin-top: -4px;
-    margin-bottom: 16px;
-}
-
-.mdl-textfield__input {
-    /*font-size: 14px;*/
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 6px;
 }
 
 /deep/ .mdl-textfield .mdl-textfield__input {
@@ -87,7 +81,7 @@
 }
 
 /deep/ .date-picker .md2-datepicker-trigger .md2-datepicker-input .md2-datepicker-value {
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

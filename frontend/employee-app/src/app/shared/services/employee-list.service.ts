@@ -2,13 +2,25 @@ import { Employee } from "../model/employee.model";
 
 export class EmployeeService {
 
+  getNewBlankEmployee() {
+    var blankEmp = new Employee();
+		blankEmp.gender = "Male";
+		blankEmp.grade = "SE - PG";
+		blankEmp.division = "CDC AsteRx";
+    return blankEmp;
+  }
+
   get() {
-    return this.employees;
+    return this._employees;
+  }
+
+  getById(Id) {
+    return this._employees.find(emp => emp.Id === Id);
   }
 
   add(employee) {
     if (employee.Id) {
-      var updEmployee = this.employees.find(emp => emp.Id === employee.Id);
+      var updEmployee = this._employees.find(emp => emp.Id === employee.Id);
       updEmployee.firstName = employee.firstName;
       updEmployee.lastName = employee.lastName;
       updEmployee.gender = employee.gender;
@@ -28,27 +40,27 @@ export class EmployeeService {
       console.log("Updated");
     } else {
       employee.Id = this._getNewId();
-      this.employees.push(employee);
+      this._employees.push(employee);
       console.log("Added");
     }
   }
 
   delete(Id) {
-    var updEmployee = this.employees.find(emp => emp.Id === Id);
-    var index = this.employees.indexOf(updEmployee);
+    var updEmployee = this._employees.find(emp => emp.Id === Id);
+    var index = this._employees.indexOf(updEmployee);
     if (index >= 0) {
-      this.employees.splice(index, 1);
+      this._employees.splice(index, 1);
     }
     console.log("Deleted");
   }
 
   _getNewId() {
-    if (this.employees.length > 0) {
-      return Math.max.apply(Math, this.employees.map(emp => emp.Id)) + 1;
+    if (this._employees.length > 0) {
+      return Math.max.apply(Math, this._employees.map(emp => emp.Id)) + 1;
     }
   }
 
-  employees = [
+  _employees = [
     {
       Id: 1,
       firstName: "Albertus",

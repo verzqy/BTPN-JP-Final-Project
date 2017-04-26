@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   selectedEmployee;
+  initialEmployee;
   // title = 'app works!';
   onEmployeeInListClicked(emp) {
     this.selectedEmployee = emp;
@@ -14,5 +15,9 @@ export class AppComponent {
 
   cancelFormClicked(emp) {
     this.selectedEmployee = emp;
+  }
+
+  saveFormClicked(emp) {
+    this.initialEmployee = emp;
   }
 }

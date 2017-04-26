@@ -11,11 +11,10 @@ import { EmployeeService } from '../shared/services/employee-list.service';
 })
 
 export class FormEmployeeComponent implements OnInit {
-	@Input() set selectedEmp(value: Employee) {
-		this.selectedEmployee = value;
-		this.initialEmployee = null;
-		if (this.selectedEmployee) {
-			this.initialEmployee = new Employee();
+	@Input() set selectedEmpSelect(value) {
+		this.initialEmployee = this.eService.getNewBlankEmployee();
+		if (value) {
+			this.selectedEmployee = this.eService.getById(value);
 			this.initialEmployee.Id = this.selectedEmployee.Id;
 			this.initialEmployee.firstName = this.selectedEmployee.firstName;
 			this.initialEmployee.lastName = this.selectedEmployee.lastName;
@@ -35,8 +34,10 @@ export class FormEmployeeComponent implements OnInit {
 			this.initialEmployee.photo = this.selectedEmployee.photo;
 		}
 	}
+
 	@Output() cancelClicked = new EventEmitter();
-	selectedEmployee: Employee;
+	@Output() saveClicked = new EventEmitter();
+	selectedEmployee;
 	initialEmployee: Employee;
 	employeeForm;
 
@@ -49,31 +50,14 @@ export class FormEmployeeComponent implements OnInit {
 	}
 
 	onSave() {
-		this.eService.add(this.initialEmployee);
+		this.saveClicked.emit(this.initialEmployee);
 		this.onCancel();
 	}
 
 	onCancel() {
-		this.selectedEmployee = null;
-		this.initialEmployee = null;
+		this.selectedEmployee =  this.eService.getNewBlankEmployee();
+		this.initialEmployee =  this.selectedEmployee;
 		this.cancelClicked.emit(this.selectedEmployee);
 	}
-}
 
-			// this.selectedEmployee.Id = this.initialEmployee.Id;
-			// this.selectedEmployee.firstName = this.initialEmployee.firstName;
-			// this.selectedEmployee.lastName = this.initialEmployee.lastName;
-			// this.selectedEmployee.gender = this.initialEmployee.gender;
-			// this.selectedEmployee.dob = this.initialEmployee.dob;
-			// this.selectedEmployee.nationality = this.initialEmployee.nationality;
-			// this.selectedEmployee.maritalStatus = this.initialEmployee.maritalStatus;
-			// this.selectedEmployee.phone = this.initialEmployee.phone;
-			// this.selectedEmployee.subDivision = this.initialEmployee.subDivision;
-			// this.selectedEmployee.status = this.initialEmployee.status;
-			// this.selectedEmployee.suspendDate = this.initialEmployee.suspendDate;
-			// this.selectedEmployee.hiredDate = this.initialEmployee.hiredDate;
-			// this.selectedEmployee.grade = this.initialEmployee.grade;
-			// this.selectedEmployee.division = this.initialEmployee.division;
-			// this.selectedEmployee.email = this.initialEmployee.email;
-			// this.selectedEmployee.location = this.initialEmployee.location;
-			// this.selectedEmployee.photo = this.initialEmployee.photo;
+}

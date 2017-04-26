@@ -8,6 +8,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     selector: 'material-select',
     templateUrl: 'material-select.component.html',
     styles: [`
+        .mdl-textfield {
+            margin-top: 4px;
+            margin-bottom: -10px;
+        }
         .mdl-menu__container {
 	        width: 100% !important;
         }

@@ -19,6 +19,12 @@
     padding: 5px 0px 0px 0px;
 }
 
+.left-search-input {
+    float: left;
+    margin-top: 5px;
+    height: 45px;
+}
+
 .search-chip {
     float: right;
     padding: 9px 0px 0px 0px;

@@ -1,2 +1,2 @@
 datepicker coba di : https://www.primefaces.org/primeng/#/calendar
-material design alternatif : getmdl.io
+http://mseemann.io/angular2-mdl/

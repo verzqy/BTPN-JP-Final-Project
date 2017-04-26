@@ -1,19 +1,26 @@
 <div class="top-bar-div">
     <div class="left-search-menu">
-        <button md-icon-button><md-icon svgIcon="search"></md-icon></button>
+        <button md-icon-button disabled><md-icon svgIcon="search"></md-icon></button>
     </div>
-    <md-input-container>
-        <input mdInput class="input-search" placeholder="Search" value="" 
-        [class.delete-visible]="deleteVisible==true">
-    </md-input-container>
+    <div class="left-search-input">
+        <md-input-container>
+            <input mdInput (keyup)="onKeyUp($event)" class="input-search" placeholder="Search" [class.delete-visible]="selectedEmployeeId">
+        </md-input-container>
+    </div>
     <div class="search-chip">
         <md-chip-list>
             <md-chip>{{employeeCount}}</md-chip>
         </md-chip-list>
     </div>
     <div class="right-search-menu">
-        <button *ngIf="deleteVisible==true" (click)="onDelete()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
+        <button *ngIf="selectedEmployeeId" (click)="onDelete()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
         <button md-icon-button (click)="onSort()"><md-icon svgIcon="sort_by_alpha"></md-icon></button>
-        <button md-icon-button><md-icon svgIcon="filter"></md-icon></button>
+        <button md-icon-button (click)="filterDialog.show()"><md-icon svgIcon="filter"></md-icon></button>
     </div>
 </div>
+
+<mdl-alert
+  #filterDialog="mdlAlert"
+  message="Filter Dialog Man!"
+  okText="Got it!"
+  ></mdl-alert>

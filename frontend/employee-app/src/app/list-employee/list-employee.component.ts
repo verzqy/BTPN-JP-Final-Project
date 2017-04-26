@@ -11,8 +11,8 @@ import { EmployeeService } from '../shared/services/employee-list.service';
 
 export class ListEmployeeComponent implements OnInit {
 	employees;
+	originEmployees;
 	@Input() selectedEmployee: Employee;
-	toggleDelete = false;
 	sortFlag = true;
 
 	@Output() employeeClicked = new EventEmitter();
@@ -21,30 +21,44 @@ export class ListEmployeeComponent implements OnInit {
 
 	ngOnInit() {
 		this.employees = this.eService.get();
+		this.originEmployees = this.employees;
+		console.log("Emitted");
 	}
 
 	onEmployeeClicked(emp) {
 		this.selectedEmployee = emp;
 		this.employeeClicked.emit(emp);
-		this.toggleDelete = true;
-		// console.log(this.selectedEmployee.dob);
 	}
 
 	setNew() {
-		this.selectedEmployee = new Employee();
-		this.selectedEmployee.gender = "Male";
-		this.selectedEmployee.grade = "SE - PG";
-		this.selectedEmployee.division = "CDC AsteRx";
+		this.selectedEmployee = this.eService.getNewBlankEmployee();
 		this.onEmployeeClicked(this.selectedEmployee);
-		this.toggleDelete = false;
+	}
+
+	@Input() set initialEmpSave(initialEmployee: Employee) {
+		if (initialEmployee) {
+			this.eService.add(initialEmployee);
+		}
 	}
 
 	onEmpDelete() {
 		this.eService.delete(this.selectedEmployee.Id);
-		this.onEmployeeClicked(null);
+		this.setNew();
 	}
 
 	onEmpSort(flag) {
 		this.sortFlag = flag;
+	}
+
+	onEmpSearch($event) {
+		const query = $event.target.value.toLowerCase();
+		if (query) {
+			this.employees = this.originEmployees.filter(emp => {
+				let empName = `${emp.firstName} ${emp.lastName}`;
+				return empName.toLowerCase().includes(query);
+			})
+		} else {
+			this.employees = this.originEmployees;
+		}
 	}
 }

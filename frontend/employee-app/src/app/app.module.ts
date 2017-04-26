@@ -6,8 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule } from '@angular/material';
-import { MDL } from './shared/directives/material-design-lite-upgrade-element';
 import { Md2Module } from 'md2';
+import { MdlModule } from '@angular-mdl/core';
 
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
@@ -31,7 +31,6 @@ import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
     NavigatorBarComponent,
     BtnSvgComponent,
     SelectedDirective,
-    MDL,
     MaterialSelect,
     OrderByAscDesc
   ],
@@ -46,6 +45,7 @@ import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
     MdChipsModule,
     MdTabsModule,
     MdSelectModule,
+    MdlModule,
     Md2Module.forRoot()
   ],
   providers: [

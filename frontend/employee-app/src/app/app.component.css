@@ -13,7 +13,7 @@
     right: auto;
     padding: 10px;
     color: white;
-    min-width: 715px;
+    min-width: 855px;
 }
 
 .top-div span {
@@ -37,7 +37,7 @@
 }
 
 .right-div {
-    min-width: 340px;
+    min-width: 480px;
     position: absolute;
     width: auto;
     height: auto;

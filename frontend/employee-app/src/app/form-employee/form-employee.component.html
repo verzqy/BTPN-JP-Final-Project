@@ -1,49 +1,25 @@
 <div *ngIf=initialEmployee class="form-body">
     <div class=left-form>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.firstName">
-            <input class="mdl-textfield__input" type="text" id="firstName" [(ngModel)]="initialEmployee.firstName" [value]="initialEmployee.firstName">
-            <label class="mdl-textfield__label" for="firstName">First Name</label>
-        </div>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.lastName">
-            <input class="mdl-textfield__input" type="text" id="lastName" [(ngModel)]="initialEmployee.lastName" [value]="initialEmployee.lastName">
-            <label class="mdl-textfield__label" for="lastName">Last Name</label>
-        </div>
+        <mdl-textfield type="text" label="First Name" [(ngModel)]="initialEmployee.firstName" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Last Name" [(ngModel)]="initialEmployee.lastName" floating-label></mdl-textfield>
         <material-select [name]="'gender'" [(selectedValue)]="initialEmployee.gender" [items]="lookupList.gender" [label]="'Gender'"></material-select>
-        <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Date Of Birth" style="width: 300px" [(ngModel)]="initialEmployee.dob"></md2-datepicker>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.nationality">
-            <input class="mdl-textfield__input" type="text" id="Nationality" [(ngModel)]="initialEmployee.nationality" [value]="initialEmployee.nationality">
-            <label class="mdl-textfield__label" for="nationality">Nationality</label>
-        </div>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.maritalStatus">
-            <input class="mdl-textfield__input" type="text" id="maritalStatus" [(ngModel)]="initialEmployee.maritalStatus" [value]="initialEmployee.maritalStatus">
-            <label class="mdl-textfield__label" for="maritalStatus">Marital Status</label>
-        </div>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.phone">
-            <input class="mdl-textfield__input" type="text" id="phone" [(ngModel)]="initialEmployee.phone" [value]="initialEmployee.phone">
-            <label class="mdl-textfield__label" for="phone">Phone</label>
-        </div>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.email">
-            <input class="mdl-textfield__input" type="text" id="email" [(ngModel)]="initialEmployee.email" [value]="initialEmployee.email">
-            <label class="mdl-textfield__label" for="email">Email</label>
-        </div>
+        <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Date Of Birth" style="width: 300px"
+            [(ngModel)]="initialEmployee.dob"></md2-datepicker>
+        <mdl-textfield type="text" label="Nationality" [(ngModel)]="initialEmployee.nationality" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Marital Status" [(ngModel)]="initialEmployee.maritalStatus" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Phone" [(ngModel)]="initialEmployee.phone" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Email" [(ngModel)]="initialEmployee.email" floating-label></mdl-textfield>
     </div>
     <div class=right-form>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.subDivision">
-            <input class="mdl-textfield__input" type="text" id="subDivision" [(ngModel)]="initialEmployee.subDivision" [value]="initialEmployee.subDivision">
-            <label class="mdl-textfield__label" for="subDivision">Sub Division</label>
-        </div>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.status">
-            <input class="mdl-textfield__input" type="text" id="status" [(ngModel)]="initialEmployee.status" [value]="initialEmployee.status">
-            <label class="mdl-textfield__label" for="status">Status</label>
-        </div>
-        <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Suspend Date" style="width: 300px" [(ngModel)]="initialEmployee.suspendDate"></md2-datepicker>
-        <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Hired Date" style="width: 300px" [(ngModel)]="initialEmployee.hiredDate"></md2-datepicker>
+        <mdl-textfield type="text" label="Sub Division" [(ngModel)]="initialEmployee.subDivision" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Status" [(ngModel)]="initialEmployee.status" floating-label></mdl-textfield>
+        <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Suspend Date" style="width: 300px"
+            [(ngModel)]="initialEmployee.suspendDate"></md2-datepicker>
+        <md2-datepicker class="date-picker" openOnFocus="true" format="dd/MM/y" type="date" placeholder="Hired Date" style="width: 300px"
+            [(ngModel)]="initialEmployee.hiredDate"></md2-datepicker>
         <material-select [name]="'grade'" [(selectedValue)]="initialEmployee.grade" [items]="lookupList.grade" [label]="'Grade'"></material-select>
         <material-select [name]="'division'" [(selectedValue)]="initialEmployee.division" [items]="lookupList.division" [label]="'Division'"></material-select>
-        <div mdl class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [class.is-dirty]="initialEmployee.location">
-            <input class="mdl-textfield__input" type="text" id="location" [(ngModel)]="initialEmployee.location" [value]="initialEmployee.location">
-            <label class="mdl-textfield__label" for="location">Location</label>
-        </div>
+        <mdl-textfield type="text" label="Location" [(ngModel)]="initialEmployee.location" floating-label></mdl-textfield>
     </div>
     <div class="form-img">
         <img class="img" src="src/images/no-image.png">
@@ -52,7 +28,7 @@
     <div class="form-btn">
         <div class="btn">
             <button md-raised-button (click)="onCancel()">CANCEL</button>
-            <button color="accent" (click)="onSave()" md-raised-button>SAVE</button>
+            <button md-raised-button color="accent" (click)="onSave()">SAVE</button>
         </div>
     </div>
 </div>
@@ -62,3 +38,5 @@
                 {{gender}}
             </md-option>
         </md-select>-->
+
+<!--<mdl-textfield type="text" label="Text..." [(ngModel)]="text3" floating-label></mdl-textfield>-->
