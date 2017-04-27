@@ -91,11 +91,12 @@ public class EmployeeController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:9000")
-	@DeleteMapping("/employees/delete/{id}")
+	@DeleteMapping("employees/delete/{id}")
 	public Long deleteEmployeeById(@PathVariable long id) {
 		return employeeRepository.deleteByEmpId(id);
 	}
 
+	@CrossOrigin(origins = "http://localhost:9000")
 	@GetMapping("filter/employees/")
 	public Iterable<Employee> getAllEmployeeContaining(@RequestParam String gender, @RequestParam String location) {
 

@@ -2,7 +2,6 @@ import { Component, Input, Output, OnInit, EventEmitter, Inject } from '@angular
 import { lookupListToken } from '../shared/providers';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { GlobalService } from '../shared/services/global.service';
-// import { FilterDialogComponent } from '../shared/directives/filter-dialog.component';
 
 @Component({
 	selector: 'search-bar',
@@ -51,6 +50,23 @@ export class SearchBarComponent implements OnInit {
 		this.deleteClick.emit();
 	}
 
+	openFilterDialog() {
+		let dialogRef = this.dialog.open(FilterDialogComponent, {
+			height: '300px',
+			width: '300px'
+		});
+		dialogRef.afterClosed().subscribe(result => {
+			if (result != undefined) {
+				if (result.action == "filter") {
+					this.onFilter();
+				}
+			}
+		});
+	}
+
+	onFilter() {
+		//filter method here
+	}
 }
 
 @Component({
@@ -65,5 +81,20 @@ export class SearchBarComponent implements OnInit {
 	</div>`
 })
 export class DeleteDialogComponent {
+	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>) { }
+}
+
+@Component({
+	selector: 'filter-dialog',
+	template: `
+	<div style="margin: auto; text-align: center;">
+        <a>Filter Dialog</a>
+		<div style="position: absolute; right: 10px; bottom: 10px;">
+			<button md-raised-button color="accent" style="float:right; margin-right: 2px;" (click)="dialogRef.close({action:'filter'})">FILTER</button>
+			<button md-raised-button style="float:right" (click)="dialogRef.close({action:'cancel'})">CANCEL</button>
+        </div>
+	</div>`
+})
+export class FilterDialogComponent {
 	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>) { }
 }

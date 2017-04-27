@@ -66,13 +66,9 @@ export class EmployeeService {
     }
   }
 
-  delete(Id) {
-    var updEmployee = this._employees.find(emp => emp.Id === Id);
-    var index = this._employees.indexOf(updEmployee);
-    if (index >= 0) {
-      this._employees.splice(index, 1);
-    }
-    console.log("Deleted");
+  delete(empId) {
+    return this.http.delete("http://localhost:8080/employees/delete/" + empId)
+      .map(response => response);
   }
 
   _getNewId() {

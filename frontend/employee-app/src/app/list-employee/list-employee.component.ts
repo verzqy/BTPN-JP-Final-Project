@@ -17,7 +17,7 @@ export class ListEmployeeComponent implements OnInit {
 	sortFlag = true;
 
 	constructor(private eService: EmployeeService,
-				private g: GlobalService) { }
+		private g: GlobalService) { }
 
 	ngOnInit() {
 		this.getEmployees();
@@ -47,9 +47,14 @@ export class ListEmployeeComponent implements OnInit {
 
 	onEmpDelete() {
 		//delete method here
-		this.setNew();
-		this.onEmpSearch(this.searchFlag);
-		this.g.showForm = false;
+		this.eService.delete(this.g.selectedEmployee.empId)
+			.subscribe(empId => {
+				this.setNew();
+				this.onEmpSearch(this.searchFlag);
+				this.g.showForm = false;
+				this.getEmployees();
+				// this.getEmployees(this.query, this.genderFilter, this.locationFilter, this.sort);
+			});
 	}
 
 	onEmpSort(flag) {
