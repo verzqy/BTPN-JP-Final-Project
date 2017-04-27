@@ -42,20 +42,6 @@ public class EmployeeAppApplication {
 		};
 	}
 	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("employees/").allowedOrigins("http://localhost:9000");
-				registry.addMapping("employees/{id}").allowedOrigins("http://localhost:9000");
-				registry.addMapping("filter/employees/").allowedOrigins("http://localhost:9000");
-				registry.addMapping("employees/add").allowedOrigins("http://localhost:9000");
-				registry.addMapping("locations/").allowedOrigins("http://localhost:9000");
-			}
-		};
-	}
-	
 	private void initialLocationDummy()
 	{
 		dummyLocation.add(new Location("Australia"));

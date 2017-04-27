@@ -2,6 +2,7 @@ import { Component, Input, Output, OnInit, Inject, EventEmitter } from '@angular
 import { lookupListToken } from '../shared/providers';
 import { Employee } from "../shared/model/employee.model";
 import { EmployeeService } from '../shared/services/employee.service';
+import { LocationService } from '../shared/services/location.service';
 
 @Component({
 	selector: 'form-employee',
@@ -14,39 +15,49 @@ export class FormEmployeeComponent implements OnInit {
 	@Input() set selectedEmpSelect(value) {
 		this.initialEmployee = this.eService.getNewBlankEmployee();
 		if (value) {
-			this.selectedEmployee = this.eService.getById(value);
-			this.initialEmployee.Id = this.selectedEmployee.Id;
-			this.initialEmployee.firstName = this.selectedEmployee.firstName;
-			this.initialEmployee.lastName = this.selectedEmployee.lastName;
-			this.initialEmployee.gender = this.selectedEmployee.gender;
-			this.initialEmployee.dob = this.selectedEmployee.dob;
-			this.initialEmployee.nationality = this.selectedEmployee.nationality;
-			this.initialEmployee.maritalStatus = this.selectedEmployee.maritalStatus;
-			this.initialEmployee.phone = this.selectedEmployee.phone;
-			this.initialEmployee.subDivision = this.selectedEmployee.subDivision;
-			this.initialEmployee.status = this.selectedEmployee.status;
-			this.initialEmployee.suspendDate = this.selectedEmployee.suspendDate;
-			this.initialEmployee.hiredDate = this.selectedEmployee.hiredDate;
-			this.initialEmployee.grade = this.selectedEmployee.grade;
-			this.initialEmployee.division = this.selectedEmployee.division;
-			this.initialEmployee.email = this.selectedEmployee.email;
-			this.initialEmployee.location = this.selectedEmployee.location;
-			this.initialEmployee.photo = this.selectedEmployee.photo;
+			this.getEmployee(value);
+
+			// this.initialEmployee.Id = this.selectedEmployee.Id;
+			// this.initialEmployee.firstName = this.selectedEmployee.firstName;
+			// this.initialEmployee.lastName = this.selectedEmployee.lastName;
+			// this.initialEmployee.gender = this.selectedEmployee.gender;
+			// this.initialEmployee.dob = this.selectedEmployee.dob;
+			// this.initialEmployee.nationality = this.selectedEmployee.nationality;
+			// this.initialEmployee.maritalStatus = this.selectedEmployee.maritalStatus;
+			// this.initialEmployee.phone = this.selectedEmployee.phone;
+			// this.initialEmployee.subDivision = this.selectedEmployee.subDivision;
+			// this.initialEmployee.status = this.selectedEmployee.status;
+			// this.initialEmployee.suspendDate = this.selectedEmployee.suspendDate;
+			// this.initialEmployee.hiredDate = this.selectedEmployee.hiredDate;
+			// this.initialEmployee.grade = this.selectedEmployee.grade;
+			// this.initialEmployee.division = this.selectedEmployee.division;
+			// this.initialEmployee.email = this.selectedEmployee.email;
+			// this.initialEmployee.location = this.selectedEmployee.location;
+			// this.initialEmployee.photo = this.selectedEmployee.photo;
 		}
 	}
 
+	getEmployee(value) {
+		this.eService.getById(value)
+			.subscribe(emp => {
+				this.initialEmployee = emp;
+			});
+	}
 	@Output() cancelClicked = new EventEmitter();
 	@Output() saveClicked = new EventEmitter();
 	selectedEmployee;
 	initialEmployee: Employee;
 	employeeForm;
+	locations;
 
 	constructor(
 		private eService: EmployeeService,
+		private locationService: LocationService,
 		@Inject(lookupListToken) public lookupList) { }
 
 	ngOnInit() {
 		this.eService.showForm = false;
+		this.getLocations();
 	}
 
 	onSave() {
@@ -61,7 +72,14 @@ export class FormEmployeeComponent implements OnInit {
 		this.eService.showForm = false;
 	}
 
-	employeeImage="src/images/no-image.png";
+	getLocations() {
+		this.locationService.get()
+			.subscribe(location => {
+				this.locations = location;
+			});
+	}
+
+	employeeImage = "src/images/no-image.png";
 	onChange(event) {
 		var file = event.srcElement.files;
 
@@ -73,6 +91,7 @@ export class FormEmployeeComponent implements OnInit {
 		}
 		reader.readAsDataURL(event.target.files[0]);
 		console.log(this.employeeImage);
-		
+
 	}
+
 }

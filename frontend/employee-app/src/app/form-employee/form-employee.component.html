@@ -30,8 +30,8 @@
         <md-select class="md-select" placeholder="Division" [(ngModel)]="initialEmployee.division">
             <md-option *ngFor="let division of lookupList.division" value="{{division}}">{{division}}</md-option>
         </md-select>
-        <md-select class="md-select" placeholder="Location" [(ngModel)]="initialEmployee.location">
-            <md-option *ngFor="let location of lookupList.location" value="{{location}}">{{location}}</md-option>
+        <md-select class="md-select" placeholder="Location" [(ngModel)]="initialEmployee.location.locationCity">
+            <md-option *ngFor="let location of locations" value="{{location.locationCity}}">{{location.locationCity}}</md-option>
         </md-select>
     </div>
     <div class="form-img">

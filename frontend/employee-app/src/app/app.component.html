@@ -21,7 +21,7 @@
 
   <div class="right-div">
     <navigator-bar></navigator-bar>
-    <form-employee (cancelClicked)="cancelFormClicked($event)" (saveClicked)="saveFormClicked($event)" [selectedEmpSelect]="selectedEmployee?selectedEmployee.Id:''"></form-employee>
+    <form-employee (cancelClicked)="cancelFormClicked($event)" (saveClicked)="saveFormClicked($event)" [selectedEmpSelect]="selectedEmployee?selectedEmployee.empId:''"></form-employee>
   </div>
 </div>
 

@@ -1,7 +1,13 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+
 import { Employee } from "../model/employee.model";
 
+@Injectable()
 export class EmployeeService {
   showForm = false;
+
+  constructor(private http: Http) { }
 
   getNewBlankEmployee() {
     var blankEmp = new Employee();
@@ -15,11 +21,21 @@ export class EmployeeService {
   }
 
   get() {
-    return this._employees;
+    return this.http.get('http://localhost:8080/employees/')
+      .map(response => {
+        return response.json();
+      });
   }
 
-  getById(Id) {
-    return this._employees.find(emp => emp.Id === Id);
+  getById(employeeId) {
+        return this.http.get('http://localhost:8080/employees/' + employeeId)
+      .map(response => {
+        if (response != null) {
+          return response.json();
+        } else {
+          return this.getNewBlankEmployee();
+        }
+      });
   }
 
   add(employee) {

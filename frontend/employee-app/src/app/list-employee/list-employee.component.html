@@ -1,4 +1,4 @@
-<search-bar [selectedEmployeeId]="selectedEmployee?selectedEmployee.Id:''" [employeeCount]="employees.length" (searchEmp)="onEmpSearch($event)" (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
+<search-bar [selectedEmployeeId]="selectedEmployee?selectedEmployee.empId:''" [employeeCount]="employees == null ? 0 : employees.length" (searchEmp)="onEmpSearch($event)" (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
 <div class="scroll-bar-div">
     <employee [employees]="employees" [sortFlag]="sortFlag" [selectedEmployee]="selectedEmployee" (clicked)="onEmployeeClicked($event)">
     </employee>

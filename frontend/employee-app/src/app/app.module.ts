@@ -16,6 +16,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { NavigatorBarComponent } from './navigator-bar/navigator-bar.component';
 import { BtnSvgComponent } from './shared/btn-svg/btn-svg.component';
 import { EmployeeService } from './shared/services/employee.service';
+import { LocationService } from './shared/services/location.service';
 import { SelectedDirective } from './shared/directives/selected.directive';
 import { lookupListToken, lookupList } from './shared/providers';
 import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
@@ -55,6 +56,7 @@ import { SafeUrl } from './shared/pipes/safe-url.pipe';
   ],
   providers: [
     EmployeeService,
+    LocationService,
     { provide: lookupListToken, useValue: lookupList }
   ],
   bootstrap: [AppComponent]

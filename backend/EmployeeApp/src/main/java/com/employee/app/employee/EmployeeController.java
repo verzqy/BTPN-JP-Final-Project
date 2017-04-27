@@ -27,7 +27,8 @@ public class EmployeeController {
 	private EmployeeRepository employeeRepository;
 	@Autowired
 	private LocationRepository locationRepository;
-
+	
+	@CrossOrigin(origins = "http://localhost:9000")
 	@GetMapping("employees/")
 	public Iterable<Employee> getAllEmployee() {
 		return employeeRepository.findAll();
@@ -83,6 +84,7 @@ public class EmployeeController {
 		return employeeRepository.save(emp);
 	}
 
+	@CrossOrigin(origins = "http://localhost:9000")
 	@GetMapping("employees/{id}")
 	public Employee getEmployeeById(@PathVariable long id) {
 		return employeeRepository.findOne(id);
