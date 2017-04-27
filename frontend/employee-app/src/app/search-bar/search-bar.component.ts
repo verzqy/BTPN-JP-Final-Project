@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter, Inject } from '@angular/core';
 import { lookupListToken } from '../shared/providers';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { GlobalService } from '../shared/services/global.service';
 // import { FilterDialogComponent } from '../shared/directives/filter-dialog.component';
 
 @Component({
@@ -10,7 +11,6 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 })
 
 export class SearchBarComponent implements OnInit {
-	@Input() selectedEmployeeId;
 	@Input() employeeCount;
 	@Output() searchEmp = new EventEmitter();
 	@Output() deleteClick = new EventEmitter();
@@ -18,6 +18,7 @@ export class SearchBarComponent implements OnInit {
 	sortFlag = false;
 
 	constructor(
+		private g: GlobalService,
 		@Inject(lookupListToken) public lookupList,
 		public dialog: MdDialog) { }
 

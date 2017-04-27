@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Employee } from "../shared/model/employee.model";
 
 import { EmployeeService } from '../shared/services/employee.service';
+import { GlobalService } from '../shared/services/global.service';
 
 @Component({
 	selector: 'list-employee',
@@ -13,16 +14,13 @@ export class ListEmployeeComponent implements OnInit {
 	employees;
 	originEmployees;
 	searchFlag;
-	@Input() selectedEmployee: Employee;
 	sortFlag = true;
 
-	@Output() employeeClicked = new EventEmitter();
-
-	constructor(private eService: EmployeeService) { }
+	constructor(private eService: EmployeeService,
+				private g: GlobalService) { }
 
 	ngOnInit() {
 		this.getEmployees();
-		// console.log(this.eService.get());
 	}
 
 	getEmployees() {
@@ -33,28 +31,25 @@ export class ListEmployeeComponent implements OnInit {
 			});
 	}
 
-	onEmployeeClicked(emp) {
-		this.selectedEmployee = emp;
-		this.employeeClicked.emit(emp);
-		this.eService.showForm = true;
+	setNew() {
+		this.g.selectedEmployee = this.eService.getNewBlankEmployee();
+		this.g.initialEmployee = this.eService.getNewBlankEmployee();
+		this.g.showForm = true;
 	}
 
-	setNew() {
-		this.selectedEmployee = this.eService.getNewBlankEmployee();
-		this.onEmployeeClicked(this.selectedEmployee);
-	}
 
 	@Input() set initialEmpSave(initialEmployee: Employee) {
 		if (initialEmployee) {
+			//save method here
 			this.eService.add(initialEmployee);
 		}
 	}
 
 	onEmpDelete() {
-		this.eService.delete(this.selectedEmployee.Id);
+		//delete method here
 		this.setNew();
 		this.onEmpSearch(this.searchFlag);
-		this.eService.showForm = false;
+		this.g.showForm = false;
 	}
 
 	onEmpSort(flag) {

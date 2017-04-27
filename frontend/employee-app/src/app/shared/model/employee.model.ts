@@ -1,5 +1,7 @@
+import { Location } from "../model/location.model";
+
 export class Employee {
-    Id: number;
+    empId: number;
     firstName: string;
     lastName: string;
     gender: string;
@@ -14,7 +16,7 @@ export class Employee {
     grade: string;
     division: string;
     email: string;
-    location: string;
+    location: Location;
     photo: string;
 
     Employee() {}

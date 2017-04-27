@@ -4,7 +4,7 @@
     </div>
     <div class="left-search-input">
         <md-input-container>
-            <input mdInput (keyup)="onKeyUp($event)" class="input-search" placeholder="Search" [class.delete-visible]="selectedEmployeeId">
+            <input mdInput (keyup)="onKeyUp($event)" class="input-search" placeholder="Search" [class.delete-visible]="g.selectedEmployee?g.selectedEmployee.empId:''">
         </md-input-container>
     </div>
     <div class="search-chip">
@@ -13,7 +13,7 @@
         </md-chip-list>
     </div>
     <div class="right-search-menu">
-        <button *ngIf="selectedEmployeeId" (click)="openDeleteDialog()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
+        <button *ngIf="g.selectedEmployee?g.selectedEmployee.empId:''" (click)="openDeleteDialog()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
         <button md-icon-button (click)="onSort()"><md-icon svgIcon="sort_by_alpha"></md-icon></button>
         <button md-icon-button><md-icon svgIcon="filter"></md-icon></button>
     </div>

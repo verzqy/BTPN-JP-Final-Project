@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
+import { GlobalService } from '../shared/services/global.service';
+
 @Component({
 	selector: 'employee',
 	templateUrl: 'employee.component.html',
@@ -9,13 +11,14 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class EmployeeComponent implements OnInit {
 	@Input() employees;
 	@Input() sortFlag;
-	@Input() selectedEmployee;
-	@Output() clicked = new EventEmitter();
+
+	constructor(private g: GlobalService) { }
 
 	ngOnInit() { }
 
 	onClick(emp) {
-		this.selectedEmployee = emp;
-		this.clicked.emit(this.selectedEmployee);
+		this.g.selectedEmployee = emp;
+		this.g.setInitialEmployee();
+		this.g.showForm = true;
 	}
 }

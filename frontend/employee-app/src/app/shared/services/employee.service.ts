@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Employee } from "../model/employee.model";
+import { Location } from "../model/location.model";
 
 @Injectable()
 export class EmployeeService {
-  showForm = false;
 
   constructor(private http: Http) { }
 
@@ -16,7 +16,8 @@ export class EmployeeService {
     blankEmp.division = "CDC AsteRx";
     blankEmp.maritalStatus = "Single";
     blankEmp.status = 'Contract';
-    blankEmp.location = "Bali";
+    blankEmp.location = new Location();
+    blankEmp.location.locationCity = "Bali";
     return blankEmp;
   }
 

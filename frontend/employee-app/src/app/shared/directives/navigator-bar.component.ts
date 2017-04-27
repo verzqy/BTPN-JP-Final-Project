@@ -1,4 +1,9 @@
-<div class="top-bar-div">
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+	selector: 'navigator-bar',
+	template: `
+	<div class="top-bar-div">
     <md-tab-group>
         <md-tab>
             <ng-template md-tab-label>
@@ -37,4 +42,26 @@
             <h1>Under Construction</h1>
         </md-tab>
     </md-tab-group>
-</div>
+	</div>`,
+	styles: [`
+	.top-bar-div {
+    	box-sizing: border-box;
+    	position: absolute;
+    	height: 50px;
+    	width: 100%;
+    	top: 0px;   
+    	left: 0px;
+    	bottom: 0px;
+    	padding: 1px 0px 0px 2px;
+    	background-color: #34a0ed;
+	}
+
+	.nav-bar-icon {
+    	padding: 5px 0px 0px 0px;
+	}`]
+})
+
+export class NavigatorBarComponent implements OnInit {
+
+	ngOnInit() { }
+}
