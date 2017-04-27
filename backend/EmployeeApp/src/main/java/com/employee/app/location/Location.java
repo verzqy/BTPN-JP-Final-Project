@@ -3,36 +3,48 @@ package com.employee.app.location;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 
 @Entity
-@Table(name="LOCATION")
-public class Location {	
+@Table(name = "location")
+public class Location {
 	
-	    @Id
-	    @GeneratedValue
-	    @Column(name="LOCATION_ID")
-	    private long Id;
+	public Location(){}
+	
+	public Location(long locId, String locationCity) {
+		this.locId = locId;
+		this.locationCity = locationCity;
+	}
 
-	    @Column(name="LOCATION_NAME")
-	    private String locationName;
-
-		public long getId() {
-			return Id;
-		}
-
-		public void setId(long id) {
-			Id = id;
-		}
-
-		public String getLocationName() {
-			return locationName;
-		}
-
-		public void setLocationName(String locationName) {
-			this.locationName = locationName;
-		}
-	    
+	public Location(String locationCity) {
+		this.locationCity = locationCity;
+	}
+	
+	public long getLocId() {
+		return locId;
+	}
+	
+	public void setLocId(long locId) {
+		this.locId = locId;
+	}
+	
+	public String getLocationCity() {
+		return locationCity;
+	}
+	
+	public void setLocationCity(String locationCity) {
+		this.locationCity = locationCity;
+	}
+	
+	@Id
+	@Column(name = "loc_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long locId;
+	@Column(name = "location_city", nullable = false)
+	private String locationCity;
+	
 }
