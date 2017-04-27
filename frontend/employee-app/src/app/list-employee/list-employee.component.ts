@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Employee } from "../shared/model/employee.model";
 
-import { EmployeeService } from '../shared/services/employee-list.service';
+import { EmployeeService } from '../shared/services/employee.service';
 
 @Component({
 	selector: 'list-employee',
