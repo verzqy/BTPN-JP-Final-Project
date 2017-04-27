@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 import com.employee.app.location.Location;
 
@@ -213,13 +214,21 @@ public class Employee {
 		this.dob = dob;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
+
+	// public byte[] getImage() {
+	// 	return image;
+	// }
+
+	// public void setImage(byte[] image) {
+	// 	this.image = image;
+	// }
 
 	@Id
 	@Column(name = "emp_id")
@@ -256,7 +265,10 @@ public class Employee {
 	@JoinColumn (name = "locId")
 	private Location location;
 	@Column(name = "image")
-	@Lob
-	private byte[] image;
+	@Type(type="text")
+	private String image;
+	// @Lob
+	// private byte[] image;
+	
     
 }
