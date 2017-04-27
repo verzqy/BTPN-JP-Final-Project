@@ -10,6 +10,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.employee.app.employee.Employee;
 import com.employee.app.employee.EmployeeRepository;
@@ -30,12 +33,26 @@ public class EmployeeAppApplication {
 
 	List<Location> dummyLocation = new ArrayList<Location>();
 	List<Employee> dummyEmployee = new ArrayList<Employee>();
-
+	
 	@Bean
 	public CommandLineRunner printAll(ApplicationContext ctx){
 		return args -> {
 			initialLocationDummy();
 			initialEmployeeDummy();
+		};
+	}
+	
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurerAdapter() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("employees/").allowedOrigins("http://localhost:9000");
+				registry.addMapping("employees/{id}").allowedOrigins("http://localhost:9000");
+				registry.addMapping("filter/employees/").allowedOrigins("http://localhost:9000");
+				registry.addMapping("employees/add").allowedOrigins("http://localhost:9000");
+				registry.addMapping("locations/").allowedOrigins("http://localhost:9000");
+			}
 		};
 	}
 	
@@ -83,18 +100,7 @@ public class EmployeeAppApplication {
 				,"Java Bootcamp", "Full Time", null, new Date(), "SE - PG", "CDC AsteRx","Johnie.Star@gmail.com", dummyLocation.get(0)));
 		employeeRepository.save(dummyEmployee);
 	}
+
 }
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer() {
-//		return new WebMvcConfigurerAdapter() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/employees/").allowedOrigins("http://localhost:3000");
-//				registry.addMapping("/employees/{id}").allowedOrigins("http://localhost:3000");
-//				registry.addMapping("/employees/contain").allowedOrigins("http://localhost:3000");
-//				registry.addMapping("/employees/add").allowedOrigins("http://localhost:3000/employees/add");
-//				registry.addMapping("/locations/").allowedOrigins("http://localhost:3000");
-//			}
-//		};
-//	}
+
 

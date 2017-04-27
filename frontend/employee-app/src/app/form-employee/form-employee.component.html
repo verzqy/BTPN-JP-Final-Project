@@ -39,7 +39,7 @@
         <img class="img" [src]="employeeImage | safeUrl" (click)="fileInput.click()">
         <button class="upload-icon" (click)="fileInput.click()" md-icon-button><md-icon svgIcon="camera"></md-icon></button>
     </div>
-    <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" />
+    <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" accept="image/*" />
     <div class="form-btn">
         <div class="btn">
             <button md-raised-button (click)="onCancel()">CANCEL</button>

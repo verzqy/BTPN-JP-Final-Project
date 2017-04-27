@@ -21,8 +21,6 @@ public class Employee {
 	public Employee() {
 	}
 
-	
-	
 	public Employee(String firstName, String lastName, String gender, Date dob, String nationality,
 			String maritalStatus, String phone, String subDivision, String status, Date suspendDate, Date hiredDate,
 			String grade, String division, String email, Location location) {
@@ -42,8 +40,6 @@ public class Employee {
 		this.email = email;
 		this.location = location;
 	}
-
-
 
 	public String getNationality() {
 		return nationality;
