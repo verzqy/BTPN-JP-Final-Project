@@ -9,7 +9,7 @@ import { GlobalService } from '../shared/services/global.service';
 })
 
 export class EmployeeComponent implements OnInit {
-	@Input() employees;
+	@Input() employee;
 	@Input() sortFlag;
 
 	constructor(private g: GlobalService) { }
@@ -18,7 +18,18 @@ export class EmployeeComponent implements OnInit {
 
 	onClick(emp) {
 		this.g.selectedEmployee = emp;
+		if(emp.image==null){
+			this.g.selectedEmployee.image = "src/images/no-image.png";
+		}
 		this.g.setInitialEmployee();
 		this.g.showForm = true;
+	}
+
+	setImage() {
+		if(this.employee.image == null) {
+			return "src/images/no-image.png";
+		} else {
+			return this.employee.image;
+		}
 	}
 }

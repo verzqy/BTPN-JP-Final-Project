@@ -28,6 +28,6 @@ export class GlobalService {
 		this.initialEmployee.location = new Location();
 		this.initialEmployee.location.locId = this.selectedEmployee.location.locId;
 		this.initialEmployee.location.locationCity = this.selectedEmployee.location.locationCity;
-		this.initialEmployee.photo = this.selectedEmployee.photo;
+		this.initialEmployee.image = this.selectedEmployee.image;
     }
 }

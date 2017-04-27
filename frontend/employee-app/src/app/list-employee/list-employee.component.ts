@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Employee } from "../shared/model/employee.model";
+import { Location } from "../shared/model/location.model";
 
 import { EmployeeService } from '../shared/services/employee.service';
 import { GlobalService } from '../shared/services/global.service';
@@ -35,14 +36,6 @@ export class ListEmployeeComponent implements OnInit {
 		this.g.selectedEmployee = this.eService.getNewBlankEmployee();
 		this.g.initialEmployee = this.eService.getNewBlankEmployee();
 		this.g.showForm = true;
-	}
-
-
-	@Input() set initialEmpSave(initialEmployee: Employee) {
-		if (initialEmployee) {
-			//save method here
-			this.eService.add(initialEmployee);
-		}
 	}
 
 	onEmpDelete() {

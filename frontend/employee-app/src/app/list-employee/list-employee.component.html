@@ -1,6 +1,6 @@
 <search-bar [employeeCount]="employees == null ? 0 : employees.length" (searchEmp)="onEmpSearch($event)" (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
 <div class="scroll-bar-div">
-    <employee [employees]="employees" [sortFlag]="sortFlag">
+    <employee [sortFlag]="sortFlag" *ngFor="let employee of employees | orderByAscDesc:sortFlag" [employee]=employee>
     </employee>
 </div>
 <button md-mini-fab class="floating-button" (click)="setNew()"><md-icon svgIcon="add"></md-icon></button>

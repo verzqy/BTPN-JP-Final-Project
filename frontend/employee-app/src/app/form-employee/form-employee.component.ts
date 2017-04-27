@@ -20,9 +20,7 @@ export class FormEmployeeComponent implements OnInit {
 	// 			this.initialEmployee = emp;
 	// 		});
 	// }
-
-	@Output() saveClicked = new EventEmitter();
-	employeeImage = "src/images/no-image.png";
+	
 	locations;
 
 	constructor(
@@ -37,13 +35,20 @@ export class FormEmployeeComponent implements OnInit {
 	}
 
 	onSave() {
-		this.saveClicked.emit(this.g.initialEmployee);
-		this.onCancel();
+		if (this.g.initialEmployee.image == "src/resources/images/no-image.png") {
+			this.g.initialEmployee.image = null;
+		}
+
+		this.eService.post(this.g.initialEmployee)
+			.subscribe(response => {
+				console.log(response);
+				this.onCancel();
+			})
 	}
 
 	onCancel() {
 		this.g.selectedEmployee = this.eService.getNewBlankEmployee();
-		this.g.initialEmployee = this.eService.getNewBlankEmployee(); 
+		this.g.initialEmployee = this.eService.getNewBlankEmployee();
 		this.g.showForm = false;
 	}
 
@@ -62,11 +67,10 @@ export class FormEmployeeComponent implements OnInit {
 		var reader = new FileReader();
 
 		reader.onload = (event: any) => {
-			this.employeeImage = event.target.result;
+			this.g.initialEmployee.image = event.target.result;
 		}
 		reader.readAsDataURL(event.target.files[0]);
-		console.log(this.employeeImage);
-
+		// console.log(this.g.selectedEmployee);
 	}
 
 }

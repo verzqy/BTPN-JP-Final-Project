@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import { Employee } from "../model/employee.model";
 import { Location } from "../model/location.model";
@@ -8,6 +9,8 @@ import { Location } from "../model/location.model";
 export class EmployeeService {
 
   constructor(private http: Http) { }
+  progress;
+  progressObserver;
 
   getNewBlankEmployee() {
     var blankEmp = new Employee();
@@ -18,6 +21,7 @@ export class EmployeeService {
     blankEmp.status = 'Contract';
     blankEmp.location = new Location();
     blankEmp.location.locationCity = "Bali";
+    blankEmp.image = "src/images/no-image.png";
     return blankEmp;
   }
 
@@ -29,7 +33,7 @@ export class EmployeeService {
   }
 
   getById(employeeId) {
-        return this.http.get('http://localhost:8080/employees/' + employeeId)
+    return this.http.get('http://localhost:8080/employees/' + employeeId)
       .map(response => {
         if (response != null) {
           return response.json();
@@ -39,42 +43,65 @@ export class EmployeeService {
       });
   }
 
-  add(employee) {
-    if (employee.Id) {
-      var updEmployee = this._employees.find(emp => emp.Id === employee.Id);
-      updEmployee.firstName = employee.firstName;
-      updEmployee.lastName = employee.lastName;
-      updEmployee.gender = employee.gender;
-      updEmployee.dob = employee.dob;
-      updEmployee.nationality = employee.nationality;
-      updEmployee.maritalStatus = employee.maritalStatus;
-      updEmployee.phone = employee.phone;
-      updEmployee.subDivision = employee.subDivision;
-      updEmployee.status = employee.status;
-      updEmployee.suspendDate = employee.suspendDate;
-      updEmployee.hiredDate = employee.hiredDate;
-      updEmployee.grade = employee.grade;
-      updEmployee.division = employee.division;
-      updEmployee.email = employee.email;
-      updEmployee.location = employee.location;
-      updEmployee.photo = employee.photo;
-      console.log("Updated");
-    } else {
-      employee.Id = this._getNewId();
-      this._employees.push(employee);
-      console.log("Added");
-    }
+  post(employee: Employee): Observable<Employee> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return Observable.create(observer => {
+      let formData: FormData = new FormData(),
+        xhr: XMLHttpRequest = new XMLHttpRequest();
+
+      formData.append("empId", employee.empId);
+      formData.append("firstName", employee.firstName);
+      formData.append("lastName", employee.lastName);
+      formData.append("gender", employee.gender);
+      formData.append("dob", employee.dob);
+      formData.append("nationality", employee.nationality);
+      formData.append("maritalStatus", employee.maritalStatus);
+      formData.append("phone", employee.phone);
+      formData.append("subDivision", employee.subDivision);
+      formData.append("status", employee.status);
+      if (employee.suspendDate == null) {
+        employee.suspendDate = "";
+      }
+      formData.append("suspendDate", employee.suspendDate);
+      formData.append("hiredDate", employee.hiredDate);
+      formData.append("grade", employee.grade);
+      formData.append("division", employee.division);
+      formData.append("email", employee.email);
+      formData.append("location", employee.location.locationCity);
+      formData.append("file", null);
+      if (employee.image != null) {
+        if (employee.image != "src/images/no-image.png") {
+              formData.append("file", employee.image);
+        }
+      }
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            observer.next(JSON.parse(xhr.response));
+            observer.complete();
+          } else {
+            observer.error(xhr.response);
+          }
+        }
+      };
+
+      xhr.upload.onprogress = (event) => {
+        if (this.progressObserver) {
+          this.progress = Math.round(event.loaded / event.total * 100);
+          this.progressObserver.next(this.progress);
+        }
+      };
+      console.log("OK");
+      xhr.open('POST', 'http://localhost:8080/employees/addorupdate', true);
+      xhr.send(formData);
+    });
   }
 
   delete(empId) {
     return this.http.delete("http://localhost:8080/employees/delete/" + empId)
       .map(response => response);
-  }
-
-  _getNewId() {
-    if (this._employees.length > 0) {
-      return Math.max.apply(Math, this._employees.map(emp => emp.Id)) + 1;
-    }
   }
 
   _employees = [

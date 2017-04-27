@@ -35,7 +35,7 @@
         </md-select>
     </div>
     <div class="form-img">
-        <img class="img" [src]="employeeImage | safeUrl" (click)="fileInput.click()">
+        <img class="img" [src]="g.initialEmployee.image | safeUrl" (click)="fileInput.click()">
         <button class="upload-icon" (click)="fileInput.click()" md-icon-button><md-icon svgIcon="camera"></md-icon></button>
     </div>
     <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" accept="image/*" />

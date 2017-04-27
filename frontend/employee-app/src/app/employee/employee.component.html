@@ -1,6 +1,5 @@
-<div mwSelected class="emp-card" (click)="onClick(employee)" [class.emp-card-selected]="employee == g.selectedEmployee" 
-*ngFor="let employee of employees | orderByAscDesc:sortFlag">
-    <img class="img-card" src="src/images/no-image.png">
+<div mwSelected class="emp-card" (click)="onClick(employee)" [class.emp-card-selected]="employee == g.selectedEmployee">
+    <img class="img-card" [src]="setImage() | safeUrl">
     <div class="card-left">
         <a class="emp-name">{{employee.firstName}} {{employee.lastName}}</a><br>
         <a class="emp-info">{{employee.grade}}, {{employee.division}}<br>

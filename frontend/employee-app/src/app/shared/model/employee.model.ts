@@ -17,7 +17,7 @@ export class Employee {
     division: string;
     email: string;
     location: Location;
-    photo: string;
+    image: any;
 
     Employee() {}
 }
