@@ -7,7 +7,8 @@ export class GlobalService {
     showForm = false;
     selectedEmployee;
     initialEmployee: Employee;
-
+	locations;
+	
     setInitialEmployee() {
         this.initialEmployee = new Employee();
 		this.initialEmployee.empId = this.selectedEmployee.empId;

@@ -56,8 +56,6 @@ public class EmployeeAppApplication {
 	
 	private void initialEmployeeDummy()
 	{
-		/*firstName, lastName, gender, dob, nationality, maritalStatus, phone, 
-		 *subDivision, status, suspendDate, hiredDate, grade, division, email, location*/
 		dummyEmployee.add(new Employee("Peter","Parker","Male",new Date(),"Indonesian","Single", "+12839124781"
 					,"Java Bootcamp", "Contract", new Date(), new Date(), "SE - PG", "CDC AsteRx","Peter.Parker@gmail.com", dummyLocation.get(0)));
 		dummyEmployee.add(new Employee("Harry","Potter","Male",new Date(),"Indonesian","Married", "+1283911211"

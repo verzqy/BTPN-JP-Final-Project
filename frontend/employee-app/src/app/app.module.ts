@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule, MdDialogModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule, MdDialogModule, MdCheckboxModule } from '@angular/material';
 import { Md2Module } from 'md2';
 import { MdlModule } from '@angular-mdl/core';
 
@@ -18,6 +18,7 @@ import { BtnSvgComponent } from './shared/btn-svg/btn-svg.component';
 import { GlobalService } from './shared/services/global.service';
 import { EmployeeService } from './shared/services/employee.service';
 import { LocationService } from './shared/services/location.service';
+import { AppService } from './shared/services/app.service';
 import { SelectedDirective } from './shared/directives/selected.directive';
 import { lookupListToken, lookupList } from './shared/providers';
 import { OrderByAscDesc } from './shared/pipes/order-by-asc-desc.pipe';
@@ -54,6 +55,7 @@ import { SafeUrl } from './shared/pipes/safe-url.pipe';
     MdTabsModule,
     MdSelectModule,
     MdDialogModule,
+    MdCheckboxModule,
     MdlModule,
     Md2Module.forRoot()
   ],
@@ -61,6 +63,7 @@ import { SafeUrl } from './shared/pipes/safe-url.pipe';
     EmployeeService,
     LocationService,
     GlobalService,
+    AppService,
     { provide: lookupListToken, useValue: lookupList }
   ],
   bootstrap: [AppComponent]

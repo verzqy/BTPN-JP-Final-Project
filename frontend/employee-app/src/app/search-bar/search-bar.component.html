@@ -15,6 +15,6 @@
     <div class="right-search-menu">
         <button *ngIf="g.selectedEmployee?g.selectedEmployee.empId:''" (click)="openDeleteDialog()" md-icon-button><md-icon svgIcon="delete"></md-icon></button>
         <button md-icon-button (click)="onSort()"><md-icon svgIcon="sort_by_alpha"></md-icon></button>
-        <button md-icon-button (click)="openFilterDialog()"><md-icon svgIcon="filter"></md-icon></button>
+        <button md-icon-button [class.filtered]="filterValue.gender != ''||filterValue.location != ''" (click)="openFilterDialog()"><md-icon svgIcon="filter"></md-icon></button>
     </div>
 </div>

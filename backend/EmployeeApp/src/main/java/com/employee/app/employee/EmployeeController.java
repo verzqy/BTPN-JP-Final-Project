@@ -43,12 +43,6 @@ public class EmployeeController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:9000")
-	@GetMapping("employees/{id}")
-	public Employee getEmployeeById(@PathVariable long id) {
-		return employeeRepository.findOne(id);
-	}
-
-	@CrossOrigin(origins = "http://localhost:9000")
 	@DeleteMapping("employees/delete/{id}")
 	public Long deleteEmployeeById(@PathVariable long id) {
 		return employeeRepository.deleteByEmpId(id);
@@ -65,8 +59,14 @@ public class EmployeeController {
 		} else if (!gender.equals("") && location.equals("")) {
 			return employeeRepository.findByGenderIgnoreCase(gender);
 		} else {
-			return employeeRepository.findByGenderAndLocationAllIgnoreCase(gender.toUpperCase(), location.toUpperCase());
+			return employeeRepository.findByGenderIgnoreCaseAndLocation(gender.toUpperCase(), locationRepository.findByLocationCityIgnoreCase(location));
 		}
 	}
 
+//	@CrossOrigin(origins = "http://localhost:9000")
+//	@GetMapping("employees/{id}")
+//	public Employee getEmployeeById(@PathVariable long id) {
+//		return employeeRepository.findOne(id);
+//	}
+	
 }

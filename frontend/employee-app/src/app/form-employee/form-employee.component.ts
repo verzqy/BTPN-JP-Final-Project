@@ -2,8 +2,8 @@ import { Component, Input, Output, OnInit, Inject, EventEmitter } from '@angular
 import { lookupListToken } from '../shared/providers';
 import { Employee } from "../shared/model/employee.model";
 import { EmployeeService } from '../shared/services/employee.service';
-import { LocationService } from '../shared/services/location.service';
 import { GlobalService } from '../shared/services/global.service';
+import { AppService } from '../shared/services/app.service';
 
 @Component({
 	selector: 'form-employee',
@@ -14,24 +14,14 @@ import { GlobalService } from '../shared/services/global.service';
 
 export class FormEmployeeComponent implements OnInit {
 
-	// getEmployee(value) {
-	// 	this.eService.getById(value)
-	// 		.subscribe(emp => {
-	// 			this.initialEmployee = emp;
-	// 		});
-	// }
-	
-	locations;
-
 	constructor(
 		private eService: EmployeeService,
-		private locationService: LocationService,
 		private g: GlobalService,
+		private appService: AppService,
 		@Inject(lookupListToken) public lookupList) { }
 
 	ngOnInit() {
 		this.g.showForm = false;
-		this.getLocations();
 	}
 
 	onSave() {
@@ -42,6 +32,7 @@ export class FormEmployeeComponent implements OnInit {
 		this.eService.post(this.g.initialEmployee)
 			.subscribe(response => {
 				console.log(response);
+				this.appService.notifyOther({ option: 'refresh' });
 				this.onCancel();
 			})
 	}
@@ -51,14 +42,6 @@ export class FormEmployeeComponent implements OnInit {
 		this.g.initialEmployee = this.eService.getNewBlankEmployee();
 		this.g.showForm = false;
 	}
-
-	getLocations() {
-		this.locationService.get()
-			.subscribe(location => {
-				this.locations = location;
-			});
-	}
-
 
 	onChange(event) {
 		var file = event.target.files[0];

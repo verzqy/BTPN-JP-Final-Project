@@ -14,11 +14,12 @@ export class SearchBarComponent implements OnInit {
 	@Output() searchEmp = new EventEmitter();
 	@Output() deleteClick = new EventEmitter();
 	@Output() sortClick = new EventEmitter();
+	@Output() filterEmp = new EventEmitter();
 	sortFlag = false;
+	filterValue = { gender: "", location: "" }
 
 	constructor(
 		private g: GlobalService,
-		@Inject(lookupListToken) public lookupList,
 		public dialog: MdDialog) { }
 
 	ngOnInit() { }
@@ -55,10 +56,25 @@ export class SearchBarComponent implements OnInit {
 			height: '300px',
 			width: '300px'
 		});
+		if (this.filterValue.gender != "") {
+			dialogRef.componentInstance.genderChecked = true;
+			dialogRef.componentInstance.genderName = this.filterValue.gender;
+		} else {
+			dialogRef.componentInstance.genderChecked = false;
+		}
+		if (this.filterValue.location != "") {
+			dialogRef.componentInstance.locationChecked = true;
+			dialogRef.componentInstance.locationName = this.filterValue.location;
+		} else {
+			dialogRef.componentInstance.locationChecked = false;
+		}
 		dialogRef.afterClosed().subscribe(result => {
 			if (result != undefined) {
 				if (result.action == "filter") {
-					this.onFilter();
+					this.filterValue.gender = result.genderValue;
+					this.filterValue.location = result.locationvalue;
+					this.filterEmp.emit(this.filterValue);
+
 				}
 			}
 		});
@@ -87,14 +103,44 @@ export class DeleteDialogComponent {
 @Component({
 	selector: 'filter-dialog',
 	template: `
-	<div style="margin: auto; text-align: center;">
-        <a>Filter Dialog</a>
+	<div style="margin: auto">
+	<div>
+		<div style="margin-top: 40px">
+			<md-checkbox [disableRipple]=true [(ngModel)]="genderChecked"></md-checkbox>
+			<md-select style="width: 200px" placeholder="Gender" [(ngModel)]="genderName" [disabled]="!genderChecked">
+            	<md-option *ngFor="let gender of lookupList.gender" value="{{gender}}">{{gender}}</md-option>
+        	</md-select>
+		</div>
+		<div style="margin-top: 40px">
+    		<md-checkbox [disableRipple]=true [(ngModel)]="locationChecked"></md-checkbox>
+			<md-select style="width: 200px" placeholder="Location" [(ngModel)]="locationName" [disabled]="!locationChecked">
+            	<md-option *ngFor="let location of g.locations" value="{{location.locationCity}}">{{location.locationCity}}</md-option>
+        	</md-select>
+		</div>
+	</div>
 		<div style="position: absolute; right: 10px; bottom: 10px;">
-			<button md-raised-button color="accent" style="float:right; margin-right: 2px;" (click)="dialogRef.close({action:'filter'})">FILTER</button>
+			<button md-raised-button color="accent" style="float:right; margin-right: 2px;" (click)="filterSubmit()">FILTER</button>
 			<button md-raised-button style="float:right" (click)="dialogRef.close({action:'cancel'})">CANCEL</button>
-        </div>
+    </div>
 	</div>`
 })
 export class FilterDialogComponent {
-	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>) { }
+	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>,
+		private g: GlobalService,
+		@Inject(lookupListToken) public lookupList) { }
+
+	genderChecked;
+	locationChecked;
+	genderName = "Male";
+	locationName = "Bali";
+
+	filterSubmit() {
+		if (!this.genderChecked) {
+			this.genderName = "";
+		}
+		if (!this.locationChecked) {
+			this.locationName = "";
+		}
+		this.dialogRef.close({ action: 'filter', genderValue: this.genderName, locationvalue: this.locationName })
+	}
 }

@@ -11,24 +11,12 @@ export class OrderByAscDesc implements PipeTransform {
 
     if (orderType) {
       array.sort((a: any, b: any) => {
-        if (a.lastName < b.lastName) {
-          return -1;
-        } else if (a.lastName > b.lastName) {
-          return 1;
-        } else {
-          return 0;
-        }
+        return a.lastName.localeCompare(b.lastName);
       });
       return array;
     } else {
       array.sort((a: any, b: any) => {
-        if (a.lastName > b.lastName) {
-          return -1;
-        } else if (a.lastName < b.lastName) {
-          return 1;
-        } else {
-          return 0;
-        }
+        return b.lastName.localeCompare(a.lastName);
       });
       return array;
     }

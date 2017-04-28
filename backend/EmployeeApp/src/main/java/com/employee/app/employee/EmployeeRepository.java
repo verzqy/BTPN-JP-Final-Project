@@ -14,7 +14,7 @@ import com.employee.app.location.Location;
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee,Long>{
 	public Iterable<Employee> findByGenderIgnoreCase(@Param("gender") String gender);
 	public Iterable<Employee> findByLocation(@Param("location") Location location);
-	public Iterable<Employee> findByGenderAndLocationAllIgnoreCase(@Param("gender") String gender, @Param("location") String location);
+	public Iterable<Employee> findByGenderIgnoreCaseAndLocation(@Param("gender") String gender, @Param("location") Location location);
 	
 	@Transactional
     public Long deleteByEmpId(long empId);

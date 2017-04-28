@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
@@ -226,37 +228,42 @@ public class Employee {
 	@Column(name = "emp_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long empId;
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "first_name", nullable = true)
 	private String firstName;
-	@Column(name = "last_name", nullable = false)
+	@Column(name = "last_name", nullable = true)
 	private String lastName;
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender", nullable = true)
 	private String gender;
-	@Column(name = "dob")
+	
+	@Column(name = "dob", nullable = true)
+	@Temporal(TemporalType.DATE)
 	private Date dob;
-	@Column(name = "nationality", nullable = false)
+	@Column(name = "nationality", nullable = true)
 	private String nationality;
-	@Column(name = "marital_status", nullable = false)
+	@Column(name = "marital_status", nullable = true)
 	private String maritalStatus;
-	@Column(name = "phone", nullable = false)
+	@Column(name = "phone", nullable = true)
 	private String phone;
-	@Column(name = "sub_division", nullable = false)
+	@Column(name = "sub_division", nullable = true)
 	private String subDivision;
-	@Column(name = "status", nullable = false)
+	@Column(name = "status", nullable = true)
 	private String status;
+	@Column(name = "suspend_date", nullable = true)
+	@Temporal(TemporalType.DATE)
 	private Date suspendDate;
-	@Column(name = "hired_date", nullable = false)
+	@Column(name = "hired_date", nullable = true)
+	@Temporal(TemporalType.DATE)
 	private Date hiredDate;
-	@Column(name = "grade", nullable = false)
+	@Column(name = "grade", nullable = true)
 	private String grade;
-	@Column(name = "division", nullable = false)
+	@Column(name = "division", nullable = true)
 	private String division;
-	@Column(name = "email", nullable = false)
+	@Column(name = "email", nullable = true)
 	private String email;
 	@ManyToOne
-	@JoinColumn (name = "locId")
+	@JoinColumn (name = "locId", nullable = true)
 	private Location location;
-	@Column(name = "image")
+	@Column(name = "image", nullable = true)
 	@Type(type="text")
 	private String image;
 	
