@@ -8,9 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Type;
 
 import com.employee.app.location.Location;
@@ -222,14 +222,6 @@ public class Employee {
 		this.image = image;
 	}
 
-	// public byte[] getImage() {
-	// 	return image;
-	// }
-
-	// public void setImage(byte[] image) {
-	// 	this.image = image;
-	// }
-
 	@Id
 	@Column(name = "emp_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -267,8 +259,5 @@ public class Employee {
 	@Column(name = "image")
 	@Type(type="text")
 	private String image;
-	// @Lob
-	// private byte[] image;
 	
-    
 }

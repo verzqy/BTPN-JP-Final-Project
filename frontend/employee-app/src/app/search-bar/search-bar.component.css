@@ -37,3 +37,15 @@
 .delete-visible {
     width: 140px;
 }
+
+/deep/ .search-mdinput .mat-input-wrapper .mat-input-table .mat-input-infix .mat-input-placeholder-wrapper .mat-input-placeholder.mat-empty {
+    color: white;
+}
+
+/deep/ .search-mdinput .mat-input-wrapper .mat-input-table .mat-input-infix .mat-input-placeholder-wrapper .mat-input-placeholder.mat-float {
+    color: white;
+}
+
+/deep/ .search-mdinput .mat-input-wrapper .mat-input-underline {
+    border-color: white;
+}

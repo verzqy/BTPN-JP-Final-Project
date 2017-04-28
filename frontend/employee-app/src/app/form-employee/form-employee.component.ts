@@ -61,7 +61,7 @@ export class FormEmployeeComponent implements OnInit {
 
 
 	onChange(event) {
-		var file = event.srcElement.files;
+		var file = event.target.files[0];
 
 		console.log(file[0]);
 		var reader = new FileReader();

@@ -3,7 +3,7 @@
         <button md-icon-button disabled><md-icon svgIcon="search"></md-icon></button>
     </div>
     <div class="left-search-input">
-        <md-input-container>
+        <md-input-container class="search-mdinput">
             <input mdInput (keyup)="onKeyUp($event)" class="input-search" placeholder="Search" [class.delete-visible]="g.selectedEmployee?g.selectedEmployee.empId:''">
         </md-input-container>
     </div>
