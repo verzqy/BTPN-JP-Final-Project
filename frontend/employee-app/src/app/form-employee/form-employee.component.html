@@ -1,4 +1,4 @@
-<div *ngIf="g.showForm==true" class="form-body">
+<div *ngIf="g.showForm" class="form-body">
         <div class=left-form>
             <mdl-textfield type="text" required label="First Name" [(ngModel)]="g.initialEmployee.firstName" floating-label></mdl-textfield>
             <mdl-textfield type="text" required label="Last Name" [(ngModel)]="g.initialEmployee.lastName" floating-label></mdl-textfield>
@@ -45,4 +45,7 @@
                 <button md-raised-button color="accent" (click)="onSave()">SAVE</button>
             </div>
         </div>
+</div>
+<div *ngIf="!g.showForm" style="height:100%; width:100%; display: table;">
+    <a style="display: table-cell; vertical-align: middle; text-align:center">No employee selected.</a>
 </div>
