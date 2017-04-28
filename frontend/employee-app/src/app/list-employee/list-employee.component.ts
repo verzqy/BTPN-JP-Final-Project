@@ -45,7 +45,6 @@ export class ListEmployeeComponent implements OnInit {
 			.subscribe(emp => {
 				this.employees = emp;
 				this.originEmployees = this.employees;
-				console.log(emp);
 			});
 	}
 
@@ -58,7 +57,7 @@ export class ListEmployeeComponent implements OnInit {
 
 	setNew() {
 		this.g.selectedEmployee = this.eService.getNewBlankEmployee();
-		this.g.initialEmployee = this.eService.getNewBlankEmployee();
+		this.appService.notifyOther({ option: 'select' });
 		this.g.showForm = true;
 	}
 
