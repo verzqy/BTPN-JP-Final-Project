@@ -59,7 +59,7 @@ export class FormEmployeeComponent implements OnInit {
 			hiredDate: this.formBuilder.control(employee.hiredDate, Validators.compose([Validators.required])),
 			grade: this.formBuilder.control(employee.grade, Validators.compose([Validators.required])),
 			division: this.formBuilder.control(employee.division, Validators.compose([Validators.required])),
-			email: this.formBuilder.control(employee.email, Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]))
+			email: this.formBuilder.control(employee.email, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)]))
 		});
 		this.empImage = employee.image;
 	}

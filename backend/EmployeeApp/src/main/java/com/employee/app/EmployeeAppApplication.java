@@ -58,9 +58,9 @@ public class EmployeeAppApplication {
 		dummyEmployee.add(new Employee("Steve","Jobs","Male",convertDate("24-02-1955"),"American","Married", "+6281245681891"
 				,"Java Bootcamp", "Contract", null, convertDate("07-04-1990"), "SE - AN", "CDC AsteRx","stevejobs@gmail.com", dummyLocation.get(4)));
 		dummyEmployee.add(new Employee("Jackie","Chan","Male",convertDate("07-04-1954"),"Hong Kong","Married", "+6281245681845"
-					,"Java Bootcamp", "Contract", null, convertDate("06-05-1992"), "SE - AN", "CDC AsteRx","jackiechan@gmail.com", dummyLocation.get(0)));
+				,"Java Bootcamp", "Contract", null, convertDate("06-05-1992"), "SE - AN", "CDC AsteRx","jackiechan@gmail.com", dummyLocation.get(0)));
 		dummyEmployee.add(new Employee("Donny","Yen","Male",convertDate("27-07-1963"),"China","Married", "+6281245681891"
-				,"Sub Division1", "Permanent", null, convertDate("10-04-1996"), "SE - AN", "SWD Red","yen.donny@gmail.com", dummyLocation.get(1)));
+				,"Java Bootcamp", "Permanent", null, convertDate("10-04-1996"), "SE - AN", "SWD Red","yen.donny@gmail.com", dummyLocation.get(1)));
 		dummyEmployee.add(new Employee("Andy","Lau","Male",convertDate("27-09-1961"),"Hong Kong","Single", "+6281245681873"
 				,"Java Bootcamp", "Contract", null, convertDate("05-04-1992"), "SE - AN", "SWD Red","andy.lau@gmail.com", dummyLocation.get(2)));
 		dummyEmployee.add(new Employee("Steven","Chow","Male",convertDate("22-06-1962"),"Hong Kong","Single", "+6281245681888"
@@ -72,7 +72,7 @@ public class EmployeeAppApplication {
 		dummyEmployee.add(new Employee("Sammo","Hung","Male",convertDate("07-01-1952"),"Hong Kong","Married", "+6281245681877"
 				,"Java Bootcamp", "Contract", null, convertDate("06-01-1992"), "SE - AP", "SWD Blue","sammo.hung@gmail.com", dummyLocation.get(5)));
 		dummyEmployee.add(new Employee("John","Travolta","Male",convertDate("18-02-1954"),"American","Married", "+62812456818271"
-				,"Sub Division2", "Permanent", null, convertDate("07-04-1998"), "SE - PG", "SWD Green","travolta.john@gmail.com", dummyLocation.get(0)));
+				,"Java Bootcamp", "Permanent", null, convertDate("07-04-1998"), "SE - PG", "SWD Green","travolta.john@gmail.com", dummyLocation.get(0)));
 		dummyEmployee.add(new Employee("John","Cena","Male",convertDate("23-04-1977"),"American","Married", "+6281245681864"
 				,"Java Bootcamp", "Contract", convertDate("06-03-2012"), convertDate("15-07-2001"), "SE - JP", "SWD Blue","cena.john@gmail.com", dummyLocation.get(1)));
 		dummyEmployee.add(new Employee("Steve","Austin","Male",convertDate("18-12-1964"),"American","Married", "+6281245681851"
