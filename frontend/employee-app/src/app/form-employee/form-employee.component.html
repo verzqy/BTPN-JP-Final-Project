@@ -13,7 +13,7 @@
             <md-select class="md-select" placeholder="Marital Status" formControlName="maritalStatus">
                 <md-option *ngFor="let maritalStatus of lookupList.maritalStatus" value="{{maritalStatus}}">{{maritalStatus}}</md-option>
             </md-select>
-            <mdl-textfield type="text" pattern="-?[0-9,+]*(\.[0-9,+]+)?" error-msg="Input is not a number!" label="Phone" formControlName="phone"
+            <mdl-textfield type="text" label="Phone" formControlName="phone"
                 floating-label></mdl-textfield>
             <mdl-textfield type="text" label="Email" formControlName="email" floating-label></mdl-textfield>
         </div>
