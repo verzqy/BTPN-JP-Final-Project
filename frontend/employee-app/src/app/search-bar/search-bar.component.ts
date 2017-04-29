@@ -106,13 +106,13 @@ export class DeleteDialogComponent {
 	<div style="margin: auto">
 	<div>
 		<div style="margin-top: 40px">
-			<md-checkbox [disableRipple]=true [(ngModel)]="genderChecked"></md-checkbox>
+			<md-checkbox [(ngModel)]="genderChecked"></md-checkbox>
 			<md-select style="width: 200px" placeholder="Gender" [(ngModel)]="genderName" [disabled]="!genderChecked">
             	<md-option *ngFor="let gender of lookupList.gender" value="{{gender}}">{{gender}}</md-option>
         	</md-select>
 		</div>
 		<div style="margin-top: 40px">
-    		<md-checkbox [disableRipple]=true [(ngModel)]="locationChecked"></md-checkbox>
+    		<md-checkbox [(ngModel)]="locationChecked"></md-checkbox>
 			<md-select style="width: 200px" placeholder="Location" [(ngModel)]="locationName" [disabled]="!locationChecked">
             	<md-option *ngFor="let location of g.locations" value="{{location.locationCity}}">{{location.locationCity}}</md-option>
         	</md-select>
@@ -122,10 +122,15 @@ export class DeleteDialogComponent {
 			<button md-raised-button color="accent" style="float:right; margin-right: 2px;" (click)="filterSubmit()">FILTER</button>
 			<button md-raised-button style="float:right" (click)="dialogRef.close({action:'cancel'})">CANCEL</button>
     </div>
-	</div>`
+	</div>`,
+	styles: [`
+	/deep/ .mat-checkbox .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-ripple{
+		display: none;
+	} 
+	`]
 })
 export class FilterDialogComponent {
-	constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>,
+	constructor(public dialogRef: MdDialogRef<FilterDialogComponent>,
 		private g: GlobalService,
 		@Inject(lookupListToken) public lookupList) { }
 

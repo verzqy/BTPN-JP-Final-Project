@@ -7,6 +7,7 @@ import { LocationService } from '../shared/services/location.service';
 import { GlobalService } from '../shared/services/global.service';
 import { AppService } from '../shared/services/app.service';
 import { Subscription } from 'rxjs/Subscription';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'list-employee',
@@ -26,6 +27,7 @@ export class ListEmployeeComponent implements OnInit {
 		private eService: EmployeeService,
 		private locationService: LocationService,
 		private appService: AppService,
+		public snackBar: MdSnackBar,
 		private g: GlobalService) { }
 
 	ngOnInit() {
@@ -66,6 +68,9 @@ export class ListEmployeeComponent implements OnInit {
 			.subscribe(empId => {
 				this.setNew();
 				this.g.showForm = false;
+				this.snackBar.open("Deleted.", "", {
+					duration: 2000,
+				});
 				this.onEmpFilter(this.filterFlag);
 			});
 	}

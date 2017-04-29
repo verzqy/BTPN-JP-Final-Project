@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule, MdDialogModule, MdCheckboxModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdInputModule, MdChipsModule, MdTabsModule, MdSelectModule, MdDialogModule, MdCheckboxModule, MdSnackBarModule } from '@angular/material';
 import { Md2Module } from 'md2';
 import { MdlModule } from '@angular-mdl/core';
 
@@ -58,6 +58,7 @@ import { SafeUrl } from './shared/pipes/safe-url.pipe';
     MdSelectModule,
     MdDialogModule,
     MdCheckboxModule,
+    MdSnackBarModule,
     MdlModule,
     Md2Module.forRoot()
   ],

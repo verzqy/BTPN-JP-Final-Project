@@ -7,6 +7,7 @@ import { EmployeeService } from '../shared/services/employee.service';
 import { GlobalService } from '../shared/services/global.service';
 import { AppService } from '../shared/services/app.service';
 import { Subscription } from 'rxjs/Subscription';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'form-employee',
@@ -27,6 +28,7 @@ export class FormEmployeeComponent implements OnInit {
 		private g: GlobalService,
 		private appService: AppService,
 		private formBuilder: FormBuilder,
+		public snackBar: MdSnackBar,
 		@Inject(lookupListToken) public lookupList) { }
 
 	ngOnInit() {
@@ -72,6 +74,9 @@ export class FormEmployeeComponent implements OnInit {
 				console.log(response);
 				this.appService.notifyOther({ option: 'refresh' });
 				this.onCancel();
+				this.snackBar.open("Saved.", "", {
+					duration: 2000,
+				});
 			})
 		return false;
 	}
