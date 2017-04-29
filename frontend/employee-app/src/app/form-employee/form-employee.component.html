@@ -14,7 +14,7 @@
                 <md-option *ngFor="let maritalStatus of lookupList.maritalStatus" value="{{maritalStatus}}">{{maritalStatus}}</md-option>
             </md-select>
             <mdl-textfield type="text" pattern="^[0-9\(\)\-\+]{5,25}$"
-        error-msg="Input is not a number!" label="Phone" formControlName="phone"
+        error-msg="Input is not a number or too short!" label="Phone" formControlName="phone"
                 floating-label></mdl-textfield>
             <mdl-textfield type="text" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
         error-msg="Input is not an email!" label="Email" formControlName="email" floating-label></mdl-textfield>

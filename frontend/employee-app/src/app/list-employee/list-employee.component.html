@@ -4,3 +4,6 @@
     </employee>
 </div>
 <button md-mini-fab class="floating-button" (click)="setNew()"><md-icon svgIcon="add"></md-icon></button>
+<div *ngIf="employees == null ? true : (employees.length==0)" style="height:100%; width:100%; display: table;">
+    <a style="display: table-cell; vertical-align: middle; text-align:center">We couldn't find what you were looking for.</a>
+</div>
