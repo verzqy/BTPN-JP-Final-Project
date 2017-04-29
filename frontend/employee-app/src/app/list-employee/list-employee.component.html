@@ -1,4 +1,5 @@
-<search-bar [employeeCount]="employees == null ? 0 : employees.length" (filterEmp)="onEmpFilter($event)" (searchEmp)="onEmpSearch($event)" (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
+<search-bar [employeeCount]="employees == null ? 0 : employees.length" (filterEmp)="onEmpFilter($event)" (searchEmp)="onEmpSearch($event)"
+    (deleteClick)="onEmpDelete()" (sortClick)="onEmpSort($event)"></search-bar>
 <div class="scroll-bar-div">
     <employee [sortFlag]="sortFlag" *ngFor="let employee of employees | orderByAscDesc:sortFlag" [employee]=employee>
     </employee>

@@ -7,27 +7,23 @@
             <md-select class="md-select" placeholder="Gender" formControlName="gender">
                 <md-option *ngFor="let gender of lookupList.gender" value="{{gender}}">{{gender}}</md-option>
             </md-select>
-            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Date Of Birth" style="width: 300px"
-                formControlName="dob"></md2-datepicker>
+            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Date Of Birth" style="width: 300px" formControlName="dob"></md2-datepicker>
             <mdl-textfield type="text" label="Nationality" formControlName="nationality" floating-label></mdl-textfield>
             <md-select class="md-select" placeholder="Marital Status" formControlName="maritalStatus">
                 <md-option *ngFor="let maritalStatus of lookupList.maritalStatus" value="{{maritalStatus}}">{{maritalStatus}}</md-option>
             </md-select>
-            <mdl-textfield type="text" pattern="^[0-9\(\)\-\+]{5,25}$"
-        error-msg="Input is not a number or too short!" label="Phone" formControlName="phone"
-                floating-label></mdl-textfield>
-            <mdl-textfield type="text" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-        error-msg="Input is not an email!" label="Email" formControlName="email" floating-label></mdl-textfield>
+            <mdl-textfield type="text" pattern="^[0-9\(\)\-\+]{5,25}$" error-msg="Input is not a number or too short!" label="Phone"
+                formControlName="phone" floating-label></mdl-textfield>
+            <mdl-textfield type="text" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" error-msg="Input is not an email!"
+                label="Email" formControlName="email" floating-label></mdl-textfield>
         </div>
         <div class=right-form>
             <mdl-textfield type="text" label="Sub Division" formControlName="subDivision" floating-label></mdl-textfield>
             <md-select class="md-select" placeholder="Status" formControlName="status">
                 <md-option *ngFor="let status of lookupList.status" value="{{status}}">{{status}}</md-option>
             </md-select>
-            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Suspend Date" style="width: 300px"
-                formControlName="suspendDate"></md2-datepicker>
-            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Hired Date" style="width: 300px"
-                formControlName="hiredDate"></md2-datepicker>
+            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Suspend Date" style="width: 300px" formControlName="suspendDate"></md2-datepicker>
+            <md2-datepicker class="date-picker" format="dd/MM/y" type="date" placeholder="Hired Date" style="width: 300px" formControlName="hiredDate"></md2-datepicker>
             <md-select class="md-select" placeholder="Grade" formControlName="grade">
                 <md-option *ngFor="let grade of lookupList.grade" value="{{grade}}">{{grade}}</md-option>
             </md-select>

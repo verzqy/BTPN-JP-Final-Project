@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AppService {
-    
+
     private notify = new Subject<any>();
     /**
      * Observable string streams

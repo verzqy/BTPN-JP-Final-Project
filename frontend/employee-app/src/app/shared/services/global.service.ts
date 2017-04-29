@@ -5,5 +5,5 @@ import { Employee } from "../model/employee.model";
 export class GlobalService {
     showForm = false;
     selectedEmployee;
-	locations;
+    locations;
 }

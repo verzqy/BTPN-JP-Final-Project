@@ -19,5 +19,5 @@ export class Employee {
     location: Location;
     image: any;
 
-    Employee() {}
+    Employee() { }
 }

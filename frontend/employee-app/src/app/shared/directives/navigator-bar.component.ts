@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'navigator-bar',
-	template: `
+    selector: 'navigator-bar',
+    template: `
 	<div class="top-bar-div">
     <md-tab-group>
         <md-tab>
@@ -43,7 +43,7 @@ import { Component, OnInit } from '@angular/core';
         </md-tab>
     </md-tab-group>
 	</div>`,
-	styles: [`
+    styles: [`
 	.top-bar-div {
     	box-sizing: border-box;
     	position: absolute;
@@ -63,5 +63,5 @@ import { Component, OnInit } from '@angular/core';
 
 export class NavigatorBarComponent implements OnInit {
 
-	ngOnInit() { }
+    ngOnInit() { }
 }

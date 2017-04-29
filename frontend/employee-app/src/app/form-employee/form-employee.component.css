@@ -14,17 +14,14 @@
 }
 
 .left-form {
-    /*position: absolute;*/
     top: 5px;
     left: 20px;
     width: 300px;
     float: left;
     margin-left: 20px;
-    /*padding: 0px 0px  51px 0px;*/
 }
 
 .right-form {
-    /*position: absolute;*/
     top: 5px;
     left: 340px;
     width: 300px;
@@ -57,7 +54,6 @@
     height: 46px;
     left: 375px;
     bottom: 0px;
-    /*right: 0px;*/
     background-color: #34a0ed;
     width: calc(100% - 375px);
     min-width: 340px;
@@ -87,7 +83,6 @@ mdl-textfield {
 }
 
 /deep/ .date-picker .md2-datepicker-trigger .md2-datepicker-input .md2-datepicker-arrow {
-    /*border-top: 5px solid transparent;*/
     display:none;
 }
 

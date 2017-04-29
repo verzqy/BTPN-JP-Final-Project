@@ -12,13 +12,7 @@ export class EmployeeService {
 
   getNewBlankEmployee() {
     var blankEmp = new Employee();
-    // blankEmp.gender = "Male";
-    // blankEmp.grade = "SE - PG";
-    // blankEmp.division = "CDC AsteRx";
-    // blankEmp.maritalStatus = "Single";
-    // blankEmp.status = 'Contract';
     blankEmp.location = new Location();
-    // blankEmp.location.locationCity = "Bali";
     blankEmp.image = "src/images/no-image.png";
     return blankEmp;
   }
