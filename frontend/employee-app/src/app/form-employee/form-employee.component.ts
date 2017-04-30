@@ -110,7 +110,6 @@ export class FormEmployeeComponent implements OnInit {
 
 	empFile;
 	onChange(event) {
-		console.log(event);
 		if (event.target.files[0]) {
 			var file = event.target.files[0];
 			this.empFile = event.target.files[0];
