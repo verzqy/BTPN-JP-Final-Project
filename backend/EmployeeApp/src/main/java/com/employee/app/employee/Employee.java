@@ -26,7 +26,7 @@ public class Employee {
 
 	public Employee(String firstName, String lastName, String gender, Date dob, String nationality,
 			String maritalStatus, String phone, String subDivision, String status, Date suspendDate, Date hiredDate,
-			String grade, String division, String email, Location location) {
+			String grade, String division, String email, Location location, String image) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
@@ -42,6 +42,7 @@ public class Employee {
 		this.division = division;
 		this.email = email;
 		this.location = location;
+		this.image = image;
 	}
 
 	public String getNationality() {
