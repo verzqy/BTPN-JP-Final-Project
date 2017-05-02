@@ -12,3 +12,8 @@ use command prompt on employee-app folder, and type
 Back end:
 use command prompt on EmployeeApp folder, and type
 - mvn spring-boot:run
+
+I'm using Chrome browser to try my project.
+
+You can get the copy of this project from:
+https://github.com/verzqy/BTPN-JP-Final-Project
