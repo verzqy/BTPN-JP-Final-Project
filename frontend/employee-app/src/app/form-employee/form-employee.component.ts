@@ -45,8 +45,8 @@ export class FormEmployeeComponent implements OnInit {
 	setValues(employee) {
 		this.formEmployee = this.formBuilder.group({
 			empId: this.formBuilder.control(employee.empId),
-			firstName: this.formBuilder.control(employee.firstName, Validators.compose([Validators.required, Validators.pattern('[\\w\\-\\s\\/]+')])),
-			lastName: this.formBuilder.control(employee.lastName, Validators.compose([Validators.required, Validators.pattern('[\\w\\-\\s\\/]+')])),
+			firstName: this.formBuilder.control(employee.firstName, Validators.compose([Validators.required, Validators.pattern("^[-' a-zA-Z]+$")])),
+			lastName: this.formBuilder.control(employee.lastName, Validators.compose([Validators.required, Validators.pattern("^[-' a-zA-Z]+$")])),
 			gender: this.formBuilder.control(employee.gender, Validators.compose([Validators.required])),
 			dob: this.formBuilder.control(employee.dob, Validators.compose([Validators.required])),
 			nationality: this.formBuilder.control(employee.nationality, Validators.compose([Validators.required])),
