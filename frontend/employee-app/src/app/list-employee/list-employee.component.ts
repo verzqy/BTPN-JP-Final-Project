@@ -35,7 +35,6 @@ export class ListEmployeeComponent implements OnInit {
 		this.getLocations();
 
 		this.subscription = this.appService.notifyObservable$.subscribe((res) => {
-
 			if (res.hasOwnProperty('option') && res.option === 'refresh') {
 				this.onEmpFilter(this.filterFlag);
 			}
@@ -47,6 +46,7 @@ export class ListEmployeeComponent implements OnInit {
 			.subscribe(emp => {
 				this.employees = emp;
 				this.originEmployees = this.employees;
+				this.onEmpSearch(this.searchFlag);
 			});
 	}
 
